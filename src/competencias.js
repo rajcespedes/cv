@@ -1,10 +1,10 @@
 import {React, Component} from 'react';
-import {BsPlusCircle} from 'react-icons/bs';
 import languages from './languages';
 import ReactStars from 'react-rating-stars-component';
 import IdiomasComponent from './idioma-component';
-import AddCircleOutlineRoundedIcon from '@material-ui/icons/AddCircleOutlineRounded';
 import ReferenciaComponent from './referencia-component';
+import ProyectoComponent from './proyecto-component';
+import { Link } from 'react-router-dom';
 
 
 export default class Competencias extends Component {
@@ -23,6 +23,12 @@ export default class Competencias extends Component {
         this.onChangeNumero = this.onChangeNumero.bind(this);
         this.onChangePuesto = this.onChangePuesto.bind(this);
         this.addReferencia = this.addReferencia.bind(this);
+        this.addProyecto = this.addProyecto.bind(this);
+        this.onChangeNombreProyecto = this.onChangeNombreProyecto.bind(this);
+        this.onChangeDescripcionProyecto = this.onChangeDescripcionProyecto.bind(this);
+        this.onChangeInicioProyecto = this.onChangeInicioProyecto.bind(this);
+        this.onChangeFinProyecto = this.onChangeFinProyecto.bind(this);
+
 
         this.state = {
             competenciaList: [],
@@ -32,17 +38,30 @@ export default class Competencias extends Component {
             idiomaLevel: 0,
             idiomasList: [],
             idiomaSeleccionado: '',
-            referencia: ['Personal','Laboral'],
+            referencia: ['Laboral','Personal'],
             tipoReferencia: '',
             nombre: '',
             puesto: '',
             numero: '',
             referenciaList: [],
-            referenciaPersonalList: []
+            referenciaPersonalList: [],
+            nombreProyecto: '',
+            descripcionProyecto: '',
+            inicioProyecto: '',
+            finProyecto: '',
+            proyectosList: [],
+            listIdiomas: [],
+            listCompetencia: [],
+            listProyectos: [],
+            listReferenciaLaboral: [],
+            listReferenciaPersonal: []
         }
 
     }
 
+    componentDidMount(){
+        console.log(this.props.location.state.passDatos);
+    }
 
     ratingChanged(e){
         this.setState({
@@ -58,7 +77,10 @@ export default class Competencias extends Component {
     }
 
     addIdioma(e){
+
         var idiomasArray = this.state.idiomasList;
+
+        var listIdiomasArray = this.state.listIdiomas;
 
         idiomasArray.push(
             <IdiomasComponent 
@@ -68,8 +90,14 @@ export default class Competencias extends Component {
             />
         );
 
+        listIdiomasArray.unshift({
+            listIdioma: this.state.idiomaSeleccionado,
+            listIdiomaLevel: this.state.idiomaLevel
+        });
+
         this.setState({
             idiomasList: idiomasArray,
+            listIdioma: listIdiomasArray,
             counter: this.state.counter + 1
         });
     }
@@ -101,20 +129,79 @@ export default class Competencias extends Component {
     onChangeTipoReferencia(e){
         this.setState({
             tipoReferencia: e.target.value
-        });
-
-        
+        });        
     }
 
     addCompetencia(e){
+
         var competenciaArray = this.state.competenciaList;
-        
+
+        // var listCompetenciaArray = this.state.listCompetencia;
+       
         competenciaArray.unshift(
             this.state.competencia
         );
 
+        // listCompetenciaArray.unshift(this.state.competencia);
+
         this.setState({
             competenciaList: competenciaArray,
+            listCompetencia: competenciaArray,
+            counter: this.state.counter + 1
+        });
+
+    }
+    
+    onChangeNombreProyecto(e){
+        this.setState({
+            nombreProyecto: e.target.value
+        });
+    }
+
+    onChangeDescripcionProyecto(e){
+        this.setState({
+            descripcionProyecto: e.target.value
+        });
+    }
+
+    onChangeInicioProyecto(e){
+        this.setState({
+            inicioProyecto: e.target.value
+        });
+    }
+
+    onChangeFinProyecto(e){
+        this.setState({
+            finProyecto: e.target.value
+        });
+    }
+
+    addProyecto(e){
+        
+        var proyectoArray = this.state.proyectosList;
+
+        var listProyectosArray = this.state.listProyectos;
+
+        proyectoArray.unshift(
+            <ProyectoComponent 
+            key={'l' + this.state.counter + 1}
+            nombreProyecto={this.state.nombreProyecto}
+            descripcionProyecto={this.state.descripcionProyecto}
+            fechaInicioProyecto={this.state.inicioProyecto}
+            fechaFinProyecto={this.state.finProyecto}
+            />
+        );
+
+        listProyectosArray.unshift({
+            listNombreProyecto: this.state.nombreProyecto,
+            listDescripcionProyecto: this.state.descripcionProyecto,
+            listFechaInicioProyecto: this.state.inicioProyecto,
+            listFechaFinProyecto: this.state.finProyecto
+        });
+
+        this.setState({
+            proyectosList: proyectoArray,
+            listProyectos: listProyectosArray,
             counter: this.state.counter + 1
         });
 
@@ -122,11 +209,11 @@ export default class Competencias extends Component {
 
     addReferencia(e){
 
-        console.log(this.state.tipoReferencia);
-
         if(this.state.tipoReferencia == 'Laboral') {
 
             var referenciaArray = this.state.referenciaList;
+
+            var listReferenciaLaboralArray = this.state.listReferenciaLaboral;
 
             referenciaArray.unshift(
                 <ReferenciaComponent 
@@ -138,13 +225,23 @@ export default class Competencias extends Component {
                 />            
             );
 
+            listReferenciaLaboralArray.unshift({
+                listNombreReferenciaLaboral: this.state.nombre,
+                listPuestoReferenciaLaboral: this.state.puesto,
+                listNumeroReferenciaLaboral: this.state.numero,
+                listTipoReferenciaLaboral: this.state.tipoReferencia
+            });
+
         this.setState({
             referenciaList: referenciaArray,
+            listReferenciaLaboral: listReferenciaLaboralArray,
             counter: this.state.counter + 1
         });
 
         } else {
             var referenciaPersonalArray = this.state.referenciaPersonalList;
+
+            var listReferenciaPersonalArray = this.state.listReferenciaPersonal;
 
             referenciaPersonalArray.unshift(
                 <ReferenciaComponent 
@@ -156,12 +253,23 @@ export default class Competencias extends Component {
                 />            
             );
 
+            listReferenciaPersonalArray.unshift({
+                listReferenciaPersonalNombre: this.state.nombre,
+                listReferenciaPersonalPuesto: this.state.puesto,
+                listReferenciaPersonalNumero: this.state.numero,
+                listReferenciaPersonaltipoReferencia: this.state.tipoReferencia
+            });
+
+
+
         this.setState({
             referenciaPersonalList: referenciaPersonalArray,
+            listReferenciaPersonal: listReferenciaPersonalArray,
             counter: this.state.counter + 1
         });
         }
 
+        console.log(this.state.referenciaList || this.state.referenciaPersonalList);
         
     }
 
@@ -172,7 +280,7 @@ export default class Competencias extends Component {
                     <div className='col'>
                       <h1>Competencias</h1>  
                       <input placeholder='Competencia' type="text" onChange={this.onChangeCompetencia} /> 
-                      <label className="ml-3">Agregar habilidad</label> <AddCircleOutlineRoundedIcon fontSize='medium' onClick={this.addCompetencia}/>
+                      <button className="ml-5 btn btn-info btn-sm" onClick={this.addCompetencia}>Agregar habilidad</button>
                     </div>
                 </div>
                 <div className="row">
@@ -204,7 +312,7 @@ export default class Competencias extends Component {
                         this.state.idiomaLevel == 3 ? <label>Alto</label> : '' }
                     </div>
                     <div className="col d-flex align-items-center">
-                        <label>Agregar idioma</label> <AddCircleOutlineRoundedIcon fontSize='medium' onClick={this.addIdioma}/>
+                        <button className="ml-5 btn btn-info btn-sm" onClick={this.addIdioma}>Agregar idioma</button>
                     </div>
                 </div>
                 <div className="row mt-5">
@@ -227,25 +335,32 @@ export default class Competencias extends Component {
                 </div>
                 <div className="row mb-2">
                     <div className="col">
-                        <input placeholder='Nombre del proyecto' />
+                        <input type="text" placeholder='Nombre del proyecto' onChange={this.onChangeNombreProyecto}/>
                     </div>
                 </div>
                 <div className="row  mb-1">
                     <div className="col-2">
-                        <textarea placeholder="Descripcion/Impacto"></textarea> 
+                        <textarea placeholder="Descripcion/Impacto" onChange={this.onChangeDescripcionProyecto}></textarea> 
                     </div>
                 </div>
                 <div className="row  mb-2">
                     <div className="col-2">
-                        <input placeholder="Tiempo de ejecución" />
-                    </div>
-                    <div className="col-2">
-                        <label>Agregar</label> <AddCircleOutlineRoundedIcon fontSize='medium'/>
+                        <input type="date" onChange={this.onChangeInicioProyecto} />
                     </div>
                 </div>
                 <div className="row  mb-2">
                     <div className="col-2">
-                        <input placeholder="Tiempo de ejecución" />
+                        <input type="date"  onChange={this.onChangeFinProyecto}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-2">
+                        <button className="ml-5 btn btn-info btn-sm" onClick={this.addProyecto}>Agregar proyecto</button>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                        {this.state.proyectosList}
                     </div>
                 </div>
                 <div className="row  mb-2">
@@ -264,34 +379,44 @@ export default class Competencias extends Component {
                 </div>
                 <div className="row  mb-2">
                     <div className="col-2">
-                        <input placeholder='Nombre' onChange={this.onChangeNombre}/>
+                        <input type="text" placeholder='Nombre' onChange={this.onChangeNombre}/>
                     </div>
+                </div>
+                <div className="row mb-2">
                     <div className="col-2">
-                        <input placeholder='Número' onChange={this.onChangeNumero}/>
-                    </div>
-                    <div className="col-2 d-flex align-items-end">
-                        <div>
-                            <label>Agregar referencia</label> <AddCircleOutlineRoundedIcon onClick={this.addReferencia} fontSize='medium'/>
-                        </div>
+                        <input type="text" placeholder='Número' onChange={this.onChangeNumero}/>
                     </div>
                 </div>
                 <div className="row  mb-2">
                     <div className="col-2">
-                        <input placeholder='Puesto o Relación' onChange={this.onChangePuesto}/>
+                        <input placeholder='Puesto o Relación' type="text" onChange={this.onChangePuesto}/>
+                    </div>
+                </div>              
+                <div className="row">
+                    <div className="col-2 d-flex align-items-end">
+                        <div>
+                            <button className="btn btn-info btn-sm" onClick={this.addReferencia}>Agregar referencia</button>
+                        </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col">
-                        <label className="font-weight-bold">Tipo referencia</label>
-                    </div>
-                    <div className="col">
-                        <label className="font-weight-bold">Nombre</label>
-                    </div>
-                    <div className="col">
-                        <label className="font-weight-bold">Puesto</label>
-                    </div>
-                    <div className="col">
-                        <label className="font-weight-bold">Contacto</label>
+                    {this.state.referenciaList.length > 0 || this.state.referenciaPersonalList.length > 0? 
+                    <div className="row">
+                        <div className="col">
+                            <label className="font-weight-bold">Tipo referencia</label>
+                        </div>
+                        <div className="col">
+                            <label className="font-weight-bold">Nombre</label>
+                        </div>
+                        <div className="col">
+                            <label className="font-weight-bold">Puesto</label>
+                        </div>
+                        <div className="col">
+                            <label className="font-weight-bold">Contacto</label>
+                        </div>
+                </div> : ''
+                }
                     </div>
                 </div>
                 <div className="row">
@@ -303,6 +428,52 @@ export default class Competencias extends Component {
                     <div className="col">
                         {this.state.referenciaPersonalList}
                     </div>
+                </div>
+                <div>
+                    <Link to={
+                        {
+                            pathname: '/resumen',
+                            state: {
+                                passDatos: {
+                                        nombres: this.props.location.state.passDatos.nombres,
+                                        apellidos: this.props.location.state.passDatos.apellidos,
+                                        ocupacion: this.props.location.state.passDatos.ocupacion,
+                                        barrio: this.props.location.state.passDatos.barrio,
+                                        celular: this.props.location.state.passDatos.celular,
+                                        telefono: this.props.location.state.passDatos.telefono,
+                                        email: this.props.location.state.passDatos.email,
+                                        licencia: this.props.location.state.passDatos.licencia,
+                                        vehiculo: this.props.location.state.passDatos.vehiculo,
+                                        traslado: this.props.location.state.passDatos.traslado,
+
+                                        passPasantia: this.props.location.state.passDatos.passPasantia,
+                                        passLaboral: this.props.location.state.passDatos.passLaboral,
+                                        passVoluntariado: this.props.location.state.passDatos.passVoluntariado,
+
+                                        passDoctorado: this.props.location.state.listDoctorado,
+                                        passGrado: this.props.location.state.passGrado,
+                                        passMaestria: this.props.location.state.passMaestria,
+                                        passEspecialidad: this.props.location.state.passEspecialidad,
+                                        passCertificacion: this.props.location.state.passCertificacion,
+                                        passTecnico: this.props.location.state.passTecnico,
+                                        passBachiller: this.props.location.state.passBachiller,
+                                        passDiplomado: this.props.location.state.passDiplomado,
+                                        passTaller: this.props.location.state.passTaller,
+                                        passCurso: this.props.location.state.passCurso,
+
+                                        listIdiomas: this.state.listIdiomas,
+                                        listCompetencia: this.state.listCompetencia,
+                                        listProyectos: this.state.listProyectos,
+                                        listReferenciaLaboral: this.state.listReferenciaLaboral,
+                                        listReferenciaPersonal: this.state.listReferenciaPersonal
+                                }
+                            }                            
+                        }
+                        
+                    }
+                    >
+                        Finalizar
+                    </Link>
                 </div>
             </div>
         );

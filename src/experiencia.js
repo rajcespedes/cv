@@ -1,5 +1,6 @@
 import { React, Component } from 'react';
 import ExperienciaElement from './experiencia-element';
+import { Link } from 'react-router-dom';
 
 
 export default class Experiencia extends Component {
@@ -30,8 +31,19 @@ export default class Experiencia extends Component {
             funciones: '',
             voluntariado: [],
             pasantia: [],
-            tipo: ''
+            tipo: '',
+            experienciaForm: '',
+            listToSend: [],
+            laboralList: [],
+            voluntariadoList: []
         };
+    }
+
+    componentDidMount(){
+        this.setState({
+            experienciaForm: this.props.location.state.passNombre
+        });
+        console.log(this.props.location.state.passDatos);
     }
 
     onChangePuesto(e){
@@ -85,8 +97,8 @@ export default class Experiencia extends Component {
         var regEx = /\w+/g;
 
         if(!e.target.value) {
-            console.log('got nothing');             
-        }
+            
+        } 
         
         this.setState({
             funciones: e.target.value.match(regEx)
@@ -126,6 +138,8 @@ export default class Experiencia extends Component {
 
             var listHolder = this.state.list;
 
+            var laboralArray = this.state.laboralList;
+
             listHolder.unshift(
                 <ExperienciaElement 
                 key={this.state.counter}
@@ -137,15 +151,30 @@ export default class Experiencia extends Component {
                 funciones={this.state.funciones}
                 />
             );    
+
+            laboralArray.unshift(
+                {
+                    laboralPuesto: this.state.puesto,
+                    laboralEmpresa: this.state.empresa,
+                    laboralFechaIngreso: this.state.fechaIngreso,
+                    laboralFechaSalida: this.state.fechaSalida,
+                    laboralArea: this.state.area,
+                    laboralFunciones: this.state.funciones
+                }
+            );
+
         
             this.setState({
                 list: listHolder,
+                laboralList: laboralArray,
                 counter: this.state.counter + 1
             });
 
         } else if (this.state.tipo === 'voluntariado'){
 
             var listVoluntariado = this.state.voluntariado;
+
+            var voluntariadoArray = this.state.voluntariadoList;
 
             listVoluntariado.unshift(
                 <ExperienciaElement 
@@ -159,16 +188,29 @@ export default class Experiencia extends Component {
                 />
             );
 
+            voluntariadoArray.unshift(
+                {
+                    voluntariadoPuesto: this.state.puesto,
+                    voluntariadoEmpresa: this.state.empresa,
+                    voluntariadoFechaIngreso: this.state.fechaIngreso,
+                    voluntariadoFechaSalida: this.state.fechaSalida,
+                    voluntariadoArea: this.state.area,
+                    voluntariadoFunciones: this.state.funciones
+                }
+            );
+
             this.setState({
                 voluntariado: listVoluntariado,
+                voluntariadoList: voluntariadoArray,  
                 counter: this.state.counter + 1
             });
-
 
 
         } else {
 
             var listPasantia = this.state.pasantia;
+
+            var prePasantiaList = this.state.listToSend;
 
             listPasantia.unshift(
                 <ExperienciaElement 
@@ -182,14 +224,28 @@ export default class Experiencia extends Component {
                 />
             );
 
+
+            prePasantiaList.unshift(
+                {
+                    pasantiaPuesto: this.state.puesto,
+                    pasantiaEmpresa: this.state.empresa,
+                    pasantiaFechaIngreso: this.state.fechaIngreso,
+                    pasantiaFechaSalida: this.state.fechaSalida,
+                    pasantiaArea: this.state.area,
+                    pasantiaFunciones: this.state.funciones
+                }
+                
+            );
+
+
             this.setState({
                 pasantia: listPasantia,
+                listToSend: prePasantiaList,
                 counter: this.state.counter + 1
             });
             
         }
         
-        // window.location = '/experiencia';
 
     }
 
@@ -212,12 +268,10 @@ export default class Experiencia extends Component {
                     </div>
                     <div className="row">
                         <div className="col">
-                            {/* <label>Puesto</label> */}
                             <input placeholder='Puesto' className="ml-1" name='puesto' type="text" onChange={this.onChangePuesto}/>
                         </div>
                         <div className="col">
-                            <label>Empresa</label>
-                            <input className="ml-1" type="text" name="empresa" onChange={this.onChangeEmpresa}/>
+                            <input className="ml-1" placeholder="Empresa" type="text" name="empresa" onChange={this.onChangeEmpresa}/>
                         </div>
                     </div>
                     <div className="row mt-2">
@@ -277,11 +331,35 @@ export default class Experiencia extends Component {
                          { this.state.list.length || this.state.voluntariado.length || this.state.pasantia.length  > 0 
                          ? <button onClick={this.onButtonClick} className="btn btn-success">Continuar</button> 
                          : '' }
+
+                        <Link to={
+                            {
+                                pathname: '/educacion',
+                                state: {
+                                    passDatos: {
+                                        nombres: this.props.location.state.passDatos.nombres,
+                                        apellidos: this.props.location.state.passDatos.apellidos,
+                                        ocupacion: this.props.location.state.passDatos.ocupacion,
+                                        barrio: this.props.location.state.passDatos.barrio,
+                                        celular: this.props.location.state.passDatos.celular,
+                                        telefono: this.props.location.state.passDatos.telefono,
+                                        email: this.props.location.state.passDatos.email,
+                                        licencia: this.props.location.state.passDatos.licencia,
+                                        vehiculo: this.props.location.state.passDatos.vehiculo,
+                                        traslado: this.props.location.state.passDatos.traslado,
+
+                                        passPasantia: this.state.listToSend,
+                                        passLaboral: this.state.laboralList,
+                                        passVoluntariado: this.state.voluntariadoList
+                                        
+                                    }
+                                }
+                            }
+                        } >Continuar test</Link>
+
                     </div>
                 </div>
             </div>
         );
     }
-
-
 }

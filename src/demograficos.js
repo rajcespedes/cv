@@ -1,6 +1,7 @@
-import react, { Component} from 'react';
+import { React, Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default class Demograficos extends Component  {
 
@@ -29,7 +30,8 @@ export default class Demograficos extends Component  {
             email: '',
             licencia: '',
             vehiculo: '',
-            traslado: ''
+            traslado: '',
+            completeFrom: ''
         }
 
     }
@@ -83,11 +85,9 @@ export default class Demograficos extends Component  {
     }
 
     onChangeVehiculo(e){
-        // console.log(e.target.value)
         this.setState({
             vehiculo: e.target.value
         });
-
     }
 
     onChangeTraslado(e){
@@ -123,9 +123,11 @@ export default class Demograficos extends Component  {
 
         axios.post('http://localhost:5000/',demoForm)
         .then(res => console.log(res));
+        
 
         window.location = '/experiencia';
 
+    
     }
     
     render(){
@@ -213,7 +215,28 @@ export default class Demograficos extends Component  {
             </div>
             <div className="row">
                 <div className="col d-flex justify-content-end">
-                    <input type="submit" className="btn btn-info" value="Continuar"/>
+                    <Link
+                    className="btn btn-info"
+                     to={
+                        {
+                            pathname: '/experiencia',
+                            state: { 
+                                passDatos: {
+                                    nombres: this.state.nombres,
+                                    apellidos: this.state.apellidos,
+                                    ocupacion: this.state.ocupacion,
+                                    barrio: this.state.barrio,
+                                    celular: this.state.celular,
+                                    telefono: this.state.telefono,
+                                    email: this.state.email,
+                                    licencia: this.state.licencia,
+                                    vehiculo: this.state.vehiculo,
+                                    traslado: this.state.traslado,
+                                }
+                            }
+                        }
+                    }>Check</Link>
+                    {/* <input type="submit" className="btn btn-info" value="Continuar"/> */}
                 </div>
              </div>
             </form>

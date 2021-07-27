@@ -1,5 +1,6 @@
 import { React, Component } from 'react';
 import EducacionElement from './educacion-element';
+import { Link } from 'react-router-dom';
 
 export default class Educacion extends Component {
 
@@ -41,9 +42,23 @@ export default class Educacion extends Component {
             bachiller: [],
             diplomado: [],
             taller: [],
-            curso: []
+            curso: [],
+            listDoctorado: [],
+            listGrado: [],
+            listMaestria: [],
+            listEspecialidad: [],
+            listCertificacion: [],
+            listTecnico: [],
+            listBachiller: [],
+            listDiplomado: [],
+            listTaller: [],
+            listCurso: []
         }
 
+    }
+
+    componentDidMount(){
+        console.log(this.props.location.state.passDatos);
     }
 
     onChangeTipoEducacion(e){
@@ -147,6 +162,8 @@ export default class Educacion extends Component {
 
             var educacionArray = this.state.educacionList;
 
+            var gradoArray = this.state.listGrado;
+
             educacionArray.unshift(
                 <EducacionElement 
                     key={'e' + this.state.counter}
@@ -160,14 +177,28 @@ export default class Educacion extends Component {
                 />
             );
 
+            gradoArray.unshift({
+                tituloGrado: this.state.titulo,
+                tipoEducacionGrado: this.state.tipoEducacion,
+                subtipoEducacionGrado: this.state.subtipoEducacion,
+                fechaInicioGrado: this.state.fechaInicioGrado,
+                fechaFinGrado: this.state.fechaFin,
+                institucionGrado: this.state.institucion,
+                logroGrado: this.state.logro
+            });
+
+
             this.setState({
                 educacionList: educacionArray,
+                listGrado: gradoArray,
                 counter: this.state.counter + 1
             });
 
         } else if (this.state.tipoEducacion === 'maestria') {
             
             var maestriaArray = this.state.maestria;
+
+            var listMaestriaArray = this.state.maestriaArray;
 
             maestriaArray.unshift(
                 <EducacionElement 
@@ -182,14 +213,27 @@ export default class Educacion extends Component {
                 />
             );
 
+            listMaestriaArray.unshift({
+                tituloMaestria: this.state.titulo,
+                tipoEducacionMaestria: this.state.tipoEducacion,
+                subtipoEducacionMaestria: this.state.subtipoEducacion,
+                fechaInicioMaestria: this.state.fechaInicio,
+                fechaFinMaestria: this.state.fechaFin,
+                institucionMaestria: this.state.institucion,
+                logroMaestria: this.state.logro
+            });
+
             this.setState({
                 maestria: maestriaArray,
+                listMaestria: listMaestriaArray,
                 counter: this.state.counter + 1
             });
 
         } else if (this.state.tipoEducacion === 'especialidad') {
             
             var especialidadArray = this.state.especialidad;
+
+            var listEspecialidadArray = this.state.listEspecialidad;
 
             especialidadArray.unshift(
                 <EducacionElement 
@@ -204,14 +248,27 @@ export default class Educacion extends Component {
                 />
             );
 
+            listEspecialidadArray.unshift({
+                tituloEspecialidad: this.state.titulo,
+                tipoEducacionEspecialidad: this.state.tipoEducacion,
+                subtipoEducacionEspecialidad: this.state.subtipoEducacion,
+                fechaInicioEspecialidad: this.state.fechaInicio,
+                fechaFinEspecialidad: this.state.fechaFin,
+                institucionEspecialidad: this.state.institucion,
+                logroEspecialidad: this.state.logro
+            });
+
             this.setState({
                 especialidad: especialidadArray,
+                listEspecialidad: listEspecialidadArray,
                 counter: this.state.counter + 1
             });
 
         } else if (this.state.tipoEducacion === 'doctorado') {
             
             var doctoradoArray = this.state.doctorado;
+
+            var listDoctoradoArray = this.state.doctorado;
 
             doctoradoArray.unshift(
                     <EducacionElement 
@@ -226,14 +283,27 @@ export default class Educacion extends Component {
                     />
             );
 
+            listDoctoradoArray.unshift({
+                tituloDoctorado: this.state.titulo,
+                tipoEducacionDoctorado: this.state.tipoEducacion,
+                subtipoEducacionDoctorado: this.state.subtipoEducacion,
+                fechaInicioDoctorado: this.state.fechaInicioGrado,
+                fechaFinDoctorado: this.state.fechaFin,
+                institucionDoctorado: this.state.institucion,
+                logradoDoctorado: this.state.logro
+            });
+
             this.setState({
                 doctorado: doctoradoArray,
+                listDoctoradoArray: listDoctoradoArray,
                 counter: this.state.counter + 1
             });
 
         } else if (this.state.tipoEducacion === 'certificacion') {
 
             var certificacionArray = this.state.certificacion;
+
+            var listCertificacionArray = this.state.listCertificacion;
 
             certificacionArray.unshift(
                 <EducacionElement 
@@ -248,14 +318,27 @@ export default class Educacion extends Component {
             />
             );
 
+            listCertificacionArray.unshift({
+                tituloCertificacion: this.state.titulo,
+                tipoEducacionCertificacion: this.state.tipoEducacion,
+                subtipoEducacionCertificacion: this.state.subtipoEducacion,
+                fechaInicioCertificacion: this.state.fechaInicio,
+                fechaFinCertificacion: this.state.fechaFin,
+                institucionCertificacion: this.state.institucion,
+                logroCertifcacion: this.state.logro
+            });
+
             this.setState({
                 certificacion: certificacionArray,
+                listCertificacion: listCertificacionArray,
                 counter: this.state.counter + 1
             });
 
         } else if (this.state.tipoEducacion === 'tecnico') {
 
             var tecnicoArray = this.state.tecnico;
+
+            var listTecnicoArray = this.state.listTecnico;
 
             tecnicoArray.unshift(
                 <EducacionElement 
@@ -270,14 +353,27 @@ export default class Educacion extends Component {
             />  
             );
 
+            listTecnicoArray.unshift({
+                tituloTecnico: this.state.titulo,
+                tipoEducacionTecnico: this.state.tipoEducacion,
+                subtipoEducacionTecnico: this.state.subtipoEducacion,
+                fechaInicioTecnico: this.state.fechaInicio,
+                fechaFinTecnico: this.state.fechaFin,
+                institucionTecnico: this.state.institucion,
+                logroTecnico: this.state.logro
+            });
+
             this.setState({
                 tecnico: tecnicoArray,
+                listTecnico: listTecnicoArray,
                 counter: this.state.counter + 1
             });
 
         } else if (this.state.tipoEducacion === 'bachiller') {
 
             var bachillerArray = this.state.bachiller;
+
+            var listBachillerArray = this.state.listBachiller;
 
             bachillerArray.unshift(
                 <EducacionElement 
@@ -292,14 +388,27 @@ export default class Educacion extends Component {
             />  
             );
 
+            listBachillerArray.unshift({
+                tituloBachiller: this.state.titulo,
+                tipoEducacionBachiller: this.state.tipoEducacion,
+                subtipoEducacionBachiller: this.state.subtipoEducacion,
+                fechaInicioBachiller: this.state.fechaInicio,
+                fechaFinBachiller: this.state.fechaFin,
+                institucionBachiller: this.state.institucion,
+                logroBachiller: this.state.logro
+            });
+
             this.setState({
                 bachiller: bachillerArray,
+                listBachiller: listBachillerArray,
                 counter: this.state.counter + 1
             });
 
         } else if (this.state.tipoEducacion === 'diplomado') {
 
             var diplomadoArray = this.state.diplomado;
+
+            var listDiplomadoArray = this.state.listDiplomado;
 
             diplomadoArray.unshift(
                 <EducacionElement 
@@ -314,13 +423,27 @@ export default class Educacion extends Component {
                 />  
             );
 
+            listDiplomadoArray.unshift({
+                tituloDiplomado: this.state.titulo,
+                tipoEducacionDiplomado: this.state.tipoEducacion,
+                subtipoEducacionDiplomado: this.state.subtipoEducacion,
+                fechaInicioDiplomado: this.state.fechaInicio,
+                fechaFinDiplomado: this.state.fechaFin,
+                institucionDiplomado: this.state.institucion,
+                logroDiplomado: this.state.logro
+            });
+
             this.setState({
-                diplomado: diplomadoArray
+                diplomado: diplomadoArray,
+                listDiplomado: listDiplomadoArray,
+                counter: this.state.counter + 1
             });
 
         } else if (this.state.tipoEducacion == 'curso') {
 
             var cursoArray = this.state.curso;
+
+            var listCursoArray = this.state.curso;
 
             cursoArray.unshift(
                 <EducacionElement 
@@ -335,8 +458,19 @@ export default class Educacion extends Component {
                 /> 
             );
 
+            listCursoArray.unshift({
+                tituloCurso: this.state.titulo,
+                tipoEducacionCurso: this.state.tipoEducacion,
+                subtipoEducacionCurso: this.state.subtipoEducacion,
+                fechaInicioCurso: this.state.fechaInicio,
+                fechaFinCurso: this.state.fechaFin,
+                institucionCurso: this.state.institucion,
+                logroCurso: this.state.logro
+            });
+
             this.setState({
                 curso: cursoArray,
+                listCursoArray: listCursoArray,
                 counter: this.state.counter + 1
             });
 
@@ -344,6 +478,8 @@ export default class Educacion extends Component {
         else {
 
             var tallerArray = this.state.taller;
+
+            var listTallerArray = this.state.listTaller;
 
             tallerArray.unshift(
                 <EducacionElement 
@@ -358,8 +494,19 @@ export default class Educacion extends Component {
                 />  
             );
 
+            listTallerArray.unshift({
+                tituloTaller: this.state.titulo,
+                tipoEducacionTaller: this.state.tipoEducacion,
+                subtipoEducacionTaller: this.state.subtipoEducacion,
+                fechaInicioTaller: this.state.fechaInicio,
+                fechaFinTaller: this.state.fechaFin,
+                institucionTaller: this.state.institucion,
+                logroTaller: this.state.logro
+            });
+
             this.setState({
                 taller: tallerArray,
+                listTaller: listTallerArray,
                 counter: this.state.counter + 1
             });
         }
@@ -391,12 +538,10 @@ export default class Educacion extends Component {
                 </div>
                 <div className="row">
                     <div className="col">
-                        <label>Nombre título</label>
-                        <input type="text" name='titulo' onChange={this.onChangeTitulo} />
+                        <input type="text" placeholder="Título" name='titulo' onChange={this.onChangeTitulo} />
                     </div>
                     <div className="col">
-                        <label>Institución</label>
-                        <input type="text" name='institucion' onChange={this.onChangeInstitucion} />
+                        <input type="text" placeholder="Institución" name='institucion' onChange={this.onChangeInstitucion} />
                     </div>
                 </div>
                 <div className="row">
@@ -525,9 +670,60 @@ export default class Educacion extends Component {
                         {this.state.curso}
                     </div>
                 </div>
+                <div className="row">
+                    <div className="col">
+                        {this.state.curso}
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='col'>
+                        { this.state.curso > 0 || this.state.diplomado > 0 || 
+                        this.state.doctorado > 0 || this.state.especialidad > 0 ||
+                        this.state.grado > 0 || this.state.maestria > 0 || 
+                        this.state.taller > 0 || this.state.tecnico > 0  ||
+                        this.state.certificacion ? 
+                        <Link 
+                        to = {
+                            {
+                                pathname: '/competencias',
+                                state: {
+                                    passDatos: {
+                                        nombres: this.props.location.state.passDatos.nombres,
+                                        apellidos: this.props.location.state.passDatos.apellidos,
+                                        ocupacion: this.props.location.state.passDatos.ocupacion,
+                                        barrio: this.props.location.state.passDatos.barrio,
+                                        celular: this.props.location.state.passDatos.celular,
+                                        telefono: this.props.location.state.passDatos.telefono,
+                                        email: this.props.location.state.passDatos.email,
+                                        licencia: this.props.location.state.passDatos.licencia,
+                                        vehiculo: this.props.location.state.passDatos.vehiculo,
+                                        traslado: this.props.location.state.passDatos.traslado,
+
+                                        passPasantia: this.props.location.state.passDatos.passPasantia,
+                                        passLaboral: this.props.location.state.passDatos.passLaboral,
+                                        passVoluntariado: this.props.location.state.passDatos.passVoluntariado,
+
+                                        passDoctorado: this.state.listDoctorado,
+                                        passGrado: this.state.listGrado,
+                                        passMaestria: this.state.listMaestria,
+                                        passEspecialidad: this.state.listEspecialidad,
+                                        passCertificacion: this.state.listCertificacion,
+                                        passTecnico: this.state.listTecnico,
+                                        passBachiller: this.state.listBachiller,
+                                        passDiplomado: this.state.listDiplomado,
+                                        passTaller: this.state.listTaller,
+                                        passCurso:this.state.listCurso
+                                        
+                                    }
+                                }
+                            }
+                        }
+                        >Continuar</Link>  : ""}
+                    </div>
+                </div>
             </div>
         );
 
     }
 
-}
+} 
