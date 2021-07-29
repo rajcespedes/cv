@@ -430,7 +430,9 @@ export default class Competencias extends Component {
                     </div>
                 </div>
                 <div>
-                    <Link to={
+                    <Link 
+                    className="btn btn-success"
+                    to={
                         {
                             pathname: '/resumen',
                             state: {
@@ -451,15 +453,15 @@ export default class Competencias extends Component {
                                         passVoluntariado: this.props.location.state.passDatos.passVoluntariado,
 
                                         passDoctorado: this.props.location.state.listDoctorado,
-                                        passGrado: this.props.location.state.passGrado,
-                                        passMaestria: this.props.location.state.passMaestria,
-                                        passEspecialidad: this.props.location.state.passEspecialidad,
-                                        passCertificacion: this.props.location.state.passCertificacion,
-                                        passTecnico: this.props.location.state.passTecnico,
-                                        passBachiller: this.props.location.state.passBachiller,
-                                        passDiplomado: this.props.location.state.passDiplomado,
-                                        passTaller: this.props.location.state.passTaller,
-                                        passCurso: this.props.location.state.passCurso,
+                                        passGrado: this.props.location.state.passDatos.passGrado,
+                                        passMaestria: this.props.location.state.passDatos.passMaestria,
+                                        passEspecialidad: this.props.location.state.passDatos.passEspecialidad,
+                                        passCertificacion: this.props.location.state.passDatos.passCertificacion,
+                                        passTecnico: this.props.location.state.passDatos.passTecnico,
+                                        passBachiller: this.props.location.state.passDatos.passBachiller,
+                                        passDiplomado: this.props.location.state.passDatos.passDiplomado,
+                                        passTaller: this.props.location.state.passDatos.passTaller,
+                                        passCurso: this.props.location.state.passDatos.passCurso,
 
                                         listIdiomas: this.state.listIdiomas,
                                         listCompetencia: this.state.listCompetencia,

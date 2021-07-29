@@ -328,11 +328,9 @@ export default class Experiencia extends Component {
                 </div>
                 <div className="row">
                     <div className="col d-flex justify-content-end">
-                         { this.state.list.length || this.state.voluntariado.length || this.state.pasantia.length  > 0 
-                         ? <button onClick={this.onButtonClick} className="btn btn-success">Continuar</button> 
-                         : '' }
-
-                        <Link to={
+                        <Link 
+                        className="btn btn-info"
+                        to={
                             {
                                 pathname: '/educacion',
                                 state: {

@@ -236,7 +236,6 @@ export default class Demograficos extends Component  {
                             }
                         }
                     }>Check</Link>
-                    {/* <input type="submit" className="btn btn-info" value="Continuar"/> */}
                 </div>
              </div>
             </form>

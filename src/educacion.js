@@ -683,6 +683,7 @@ export default class Educacion extends Component {
                         this.state.taller > 0 || this.state.tecnico > 0  ||
                         this.state.certificacion ? 
                         <Link 
+                        className="btn btn-info"
                         to = {
                             {
                                 pathname: '/competencias',
