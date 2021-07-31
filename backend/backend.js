@@ -21,7 +21,7 @@ app.use(cors());
 
 connection.once('open', () => console.log('Connected to Database'));
 
-app.get('/', (req,res) => res.send('backend page') );
+// app.get('/', (req,res) => res.send('backend page') );
 
 // app.post('/', function(req,res) {
 
