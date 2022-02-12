@@ -35,7 +35,8 @@ export default class Experiencia extends Component {
             experienciaForm: '',
             listToSend: [],
             laboralList: [],
-            voluntariadoList: []
+            voluntariadoList: [],
+            algo: ''
         };
     }
 
@@ -102,7 +103,8 @@ export default class Experiencia extends Component {
         } 
         
         this.setState({
-            funciones: e.target.value.match(regEx)
+            funciones: e.target.value.match(regEx),
+            algo: e.target.value
         });
 
     }
@@ -253,8 +255,11 @@ export default class Experiencia extends Component {
             puesto: '',
             empresa: '',
             area: '',
-            funciones: ''
+            funciones: '',
+            algo: ''
         });
+
+        // notes.value = '';
     }
 
     render() {
@@ -302,8 +307,9 @@ export default class Experiencia extends Component {
                     <div className="row my-2">
                         <div className="col d-flex align-items-center">
                             <label className="mr-1">Funciones del puesto</label>
-                            <textarea rows="5" onChange={this.onChangeFunciones} 
-                            value={this.state.funciones} name="funciones"></textarea>
+                            <textarea rows="5" onChange={this.onChangeFunciones}    
+                            value={this.state.algo}  
+                            name="funciones"></textarea>
                         </div>
                     </div>
                     <div className="row my-2">
