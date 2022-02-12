@@ -94,7 +94,8 @@ export default class Experiencia extends Component {
 
     onChangeFunciones(e){
 
-        var regEx = /\w+/g;
+        // var regEx = /\w+/g;
+        var regEx = /.+/g;
 
         if(!e.target.value) {
             
@@ -168,6 +169,7 @@ export default class Experiencia extends Component {
                 list: listHolder,
                 laboralList: laboralArray,
                 counter: this.state.counter + 1
+                // puesto: ''
             });
 
         } else if (this.state.tipo === 'voluntariado'){
@@ -242,11 +244,17 @@ export default class Experiencia extends Component {
                 pasantia: listPasantia,
                 listToSend: prePasantiaList,
                 counter: this.state.counter + 1
+                // puesto: ''
             });
-            
+            console.log(this.state.puesto)
         }
         
-
+        this.setState({
+            puesto: '',
+            empresa: '',
+            area: '',
+            funciones: ''
+        });
     }
 
     render() {
@@ -261,40 +269,57 @@ export default class Experiencia extends Component {
                     <div className="row">
                         <div className="col mb-2" onChange={this.onChangeTipo}>
                             <label className="font-weight-bold">Tipo de experiencia</label> <br/>
-                            <input type="radio" name="tipoExperiencia" value='laboral'/> Laboral
-                            <input type="radio" name="tipoExperiencia" value='voluntariado' className="ml-1"/> Voluntariado
-                            <input type="radio" name="tipoExperiencia" value='pasantia' className="ml-1"/> Pasantía
+                            <input type="radio" name="tipoExperiencia" 
+                            value='laboral'/> Laboral
+
+                            <input type="radio" name="tipoExperiencia" 
+                            value='voluntariado' className="ml-1"/> Voluntariado
+
+                            <input type="radio" name="tipoExperiencia" 
+                            value='pasantia' className="ml-1"/> Pasantía
                         </div>
                     </div>
                     <div className="row">
                         <div className="col">
-                            <input placeholder='Puesto' className="ml-1" name='puesto' type="text" onChange={this.onChangePuesto}/>
+                            <input placeholder='Puesto' value={this.state.puesto} 
+                            className="ml-1" name='puesto' type="text" 
+                            onChange={this.onChangePuesto} required/>
                         </div>
                         <div className="col">
-                            <input className="ml-1" placeholder="Empresa" type="text" name="empresa" onChange={this.onChangeEmpresa}/>
+                            <input className="ml-1" value={this.state.empresa} 
+                            placeholder="Empresa" type="text" name="empresa" 
+                            onChange={this.onChangeEmpresa} required/>
                         </div>
                     </div>
                     <div className="row mt-2">
                         <div className="col">
-                            <label>Área/Sector/Departamento</label>
-                            <input className="ml-1" type="text" onChange={this.onChangeArea} name="area"/>
+                            {/* <label>Área/Sector/Departamento</label> */}
+                            <input className="ml-1" type="text" value={this.state.area} 
+                            placeholder='Área/Sector/Departamento'
+                            onChange={this.onChangeArea} name="area" required/>
                         </div>
                     </div>
                     <div className="row my-2">
                         <div className="col d-flex align-items-center">
                             <label className="mr-1">Funciones del puesto</label>
-                            <textarea rows="5" onChange={this.onChangeFunciones} name="funciones"></textarea>
+                            <textarea rows="5" onChange={this.onChangeFunciones} 
+                            value={this.state.funciones} name="funciones"></textarea>
                         </div>
                     </div>
                     <div className="row my-2">
                         <div className="col">
                             <label>Fecha Ingreso</label>
-                            <input className="ml-1" type="date" onChange={this.onChangeFechaIngreso}/>
+                            <input className="ml-1" type="date" 
+                            onChange={this.onChangeFechaIngreso}/>
                         </div>
                         <div className="col">
                             <label>Fecha Salida</label>
-                            <input className="mx-1" type="date" onChange={this.onChangeFechaSalida}  disabled={!this.state.checked} />  
-                            Actualmente <input type="checkbox" onChange={this.onChangeActualmente}/> 
+                            <input className="mx-1" type="date" 
+                            onChange={this.onChangeFechaSalida}  
+                            disabled={!this.state.checked} /> 
+
+                            Actualmente <input type="checkbox" 
+                            onChange={this.onChangeActualmente}/> 
                         </div>   
                     </div>
                     <div className="row">
