@@ -36,7 +36,10 @@ export default class Experiencia extends Component {
             listToSend: [],
             laboralList: [],
             voluntariadoList: [],
-            algo: ''
+            algo: '',
+            checkVoluntario: false,
+            checkLaboral: false,
+            checkPasantia: false
         };
     }
 
@@ -256,7 +259,10 @@ export default class Experiencia extends Component {
             empresa: '',
             area: '',
             funciones: '',
-            algo: ''
+            algo: '',
+            checkLaboral: false,
+            checkVoluntario: false,
+            checkPasantia: false,
         });
 
         // notes.value = '';
@@ -275,13 +281,22 @@ export default class Experiencia extends Component {
                         <div className="col mb-2" onChange={this.onChangeTipo}>
                             <label className="font-weight-bold">Tipo de experiencia</label> <br/>
                             <input type="radio" name="tipoExperiencia" 
-                            value='laboral'/> Laboral
+                            value='laboral'
+                            onClick={ () => this.setState({checkLaboral: true })}
+                            checked={this.state.checkLaboral}
+                            /> Laboral
 
                             <input type="radio" name="tipoExperiencia" 
-                            value='voluntariado' className="ml-1"/> Voluntariado
+                            value='voluntariado' className="ml-1"
+                            onClick={ () => this.setState({checkVoluntario: true })}
+                            checked={this.state.checkVoluntario}
+                            /> Voluntariado
 
                             <input type="radio" name="tipoExperiencia" 
-                            value='pasantia' className="ml-1"/> Pasantía
+                            value='pasantia' className="ml-1"
+                            onClick={ () => this.setState({checkPasantia: true })}
+                            checked={this.state.checkPasantia}
+                            /> Pasantía
                         </div>
                     </div>
                     <div className="row">
@@ -336,7 +351,9 @@ export default class Experiencia extends Component {
                 </form>
                 <div className="row">
                     <div className="col">
-                    { this.state.list.length || this.state.voluntariado.length || this.state.pasantia.length > 0 ? <h1>Historial</h1> : '' }
+                    { this.state.list.length 
+                    || this.state.voluntariado.length 
+                    || this.state.pasantia.length > 0 ? <h1>Historial</h1> : '' }
                     </div>
                 </div>
                 <div>
