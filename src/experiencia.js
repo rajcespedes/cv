@@ -263,6 +263,8 @@ export default class Experiencia extends Component {
             checkLaboral: false,
             checkVoluntario: false,
             checkPasantia: false,
+            checked: true,
+            fechaIngreso: ''
         });
 
         // notes.value = '';
@@ -279,23 +281,28 @@ export default class Experiencia extends Component {
                     </div>
                     <div className="row">
                         <div className="col mb-2" onChange={this.onChangeTipo}>
+
                             <label className="font-weight-bold">Tipo de experiencia</label> <br/>
+
                             <input type="radio" name="tipoExperiencia" 
                             value='laboral'
                             onClick={ () => this.setState({checkLaboral: true })}
                             checked={this.state.checkLaboral}
+                            required
                             /> Laboral
 
                             <input type="radio" name="tipoExperiencia" 
                             value='voluntariado' className="ml-1"
                             onClick={ () => this.setState({checkVoluntario: true })}
                             checked={this.state.checkVoluntario}
+                            required
                             /> Voluntariado
 
                             <input type="radio" name="tipoExperiencia" 
                             value='pasantia' className="ml-1"
                             onClick={ () => this.setState({checkPasantia: true })}
                             checked={this.state.checkPasantia}
+                            required
                             /> Pasantía
                         </div>
                     </div>
@@ -327,20 +334,24 @@ export default class Experiencia extends Component {
                             name="funciones"></textarea>
                         </div>
                     </div>
-                    <div className="row my-2">
+                    <div className="row my-2" required>
                         <div className="col">
                             <label>Fecha Ingreso</label>
                             <input className="ml-1" type="date" 
-                            onChange={this.onChangeFechaIngreso}/>
+                            onChange={this.onChangeFechaIngreso}
+                            value={this.state.fechaIngreso}
+                            required/>
                         </div>
                         <div className="col">
                             <label>Fecha Salida</label>
                             <input className="mx-1" type="date" 
                             onChange={this.onChangeFechaSalida}  
-                            disabled={!this.state.checked} /> 
+                            disabled={!this.state.checked} 
+                            required/> 
 
                             Actualmente <input type="checkbox" 
-                            onChange={this.onChangeActualmente}/> 
+                            onChange={this.onChangeActualmente}
+                            checked={!this.state.checked}/> 
                         </div>   
                     </div>
                     <div className="row">
