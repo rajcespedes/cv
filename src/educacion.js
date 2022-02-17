@@ -1,6 +1,21 @@
 import { React, Component } from 'react';
 import EducacionElement from './educacion-element';
 import { Link } from 'react-router-dom';
+import Select from 'react-select';
+import FixRequiredSelect from './fixRequiredSelect';
+
+const options = [
+    { value: 'Formal', label: 'Formal'},
+    { value: 'Continuada', label: 'Continuada'},
+];
+
+const UpperSelect = props => (
+    <FixRequiredSelect 
+    {...props}
+    SelectComponent={Select}
+    options={props.options || options}
+    />
+);
 
 export default class Educacion extends Component {
 
@@ -517,18 +532,24 @@ export default class Educacion extends Component {
     render() {
         return(
             <div>
+                <form onSubmit={this.addEducacion}>
                 <div className='row'>
                     <div className='col'>
                         <h1>Educación</h1>
-                    </div>
+                    </div> 
                 </div>
                 <div className="row">
                     <div className="col">
                         <label>Tipo de educación</label>                       
-                        <select onChange={this.onChangeEducacion}>
+                        {/* <select onChange={this.onChangeEducacion} required>
                             <option>Seleccione</option>
                             {this.state.educacion.map( e => <option key={e}>{e}</option>)}
-                        </select>
+                        </select> */}
+
+                        {/* <Select options={options} required /> */}
+
+                        <UpperSelect options={options} required  onChange={this.onChangeEducacion}/>
+
                     </div>
                 </div>
                 <div className="row">
@@ -538,7 +559,8 @@ export default class Educacion extends Component {
                 </div>
                 <div className="row">
                     <div className="col">
-                        <input type="text" placeholder="Título" name='titulo' onChange={this.onChangeTitulo} />
+                        <input type="text" placeholder="Título" name='titulo' 
+                        onChange={this.onChangeTitulo} required/>
                     </div>
                     <div className="col">
                         <input type="text" placeholder="Institución" name='institucion' onChange={this.onChangeInstitucion} />
@@ -567,7 +589,8 @@ export default class Educacion extends Component {
                 </div>
                 <div className="row">
                     <div className="col d-flex justify-content-end">
-                        <button className="btn btn-info" onClick={this.addEducacion} >Agregar</button>
+                        {/* <button className="btn btn-info" onClick={this.addEducacion} >Agregar</button> */}
+                        <input type="submit" value="agregar"/>
                     </div>
                 </div>
                 <div className='row'>
@@ -722,6 +745,7 @@ export default class Educacion extends Component {
                         >Continuar</Link>  : ""}
                     </div>
                 </div>
+                </form>
             </div>
         );
 

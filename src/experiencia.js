@@ -2,7 +2,6 @@ import { React, Component } from 'react';
 import ExperienciaElement from './experiencia-element';
 import { Link } from 'react-router-dom';
 
-
 export default class Experiencia extends Component {
 
     constructor(props) {
@@ -50,10 +49,12 @@ export default class Experiencia extends Component {
         console.log(this.props.location.state.passDatos);
     }
 
+
     onChangePuesto(e){
         this.setState({
             puesto: e.target.value
         });
+        
     }
 
     onChangeEmpresa(e){
@@ -111,6 +112,8 @@ export default class Experiencia extends Component {
         });
 
     }
+
+    
 
     onChangeTipo(e){
 
@@ -270,6 +273,8 @@ export default class Experiencia extends Component {
         // notes.value = '';
     }
 
+    
+
     render() {
         return(
             <div>
@@ -344,7 +349,7 @@ export default class Experiencia extends Component {
                         </div>
                         <div className="col">
                             <label>Fecha Salida</label>
-                            <input className="mx-1" type="date" 
+                            <input className="mx-1" type="date"     
                             onChange={this.onChangeFechaSalida}  
                             disabled={!this.state.checked} 
                             required/> 
