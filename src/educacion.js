@@ -84,8 +84,10 @@ export default class Educacion extends Component {
     }
 
     onChangeEducacion(e){
+
         
-        if(e.target.value == 'Formal'){
+        
+        if(e.value == 'Formal'){
             this.setState({
                 tipo: 
                     <div>
@@ -98,7 +100,7 @@ export default class Educacion extends Component {
                         <input type="radio" name="tipoEducacion" value="doctorado"/> Doctorado
                     </div>
             });
-        } else if (e.target.value == 'Continuada') {
+        } else if (e.value == 'Continuada') {
             this.setState({
                 tipo:                 
                     <div>
@@ -548,7 +550,7 @@ export default class Educacion extends Component {
 
                         {/* <Select options={options} required /> */}
 
-                        <UpperSelect options={options} required  onChange={this.onChangeEducacion}/>
+                        <UpperSelect options={options} required onChange={this.onChangeEducacion}/>
 
                     </div>
                 </div>
