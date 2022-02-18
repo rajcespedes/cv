@@ -2,20 +2,6 @@ import { React, Component } from 'react';
 import EducacionElement from './educacion-element';
 import { Link } from 'react-router-dom';
 import Select from 'react-select';
-import FixRequiredSelect from './fixRequiredSelect';
-
-const options = [
-    { value: 'Formal', label: 'Formal'},
-    { value: 'Continuada', label: 'Continuada'},
-];
-
-const UpperSelect = props => (
-    <FixRequiredSelect 
-    {...props}
-    SelectComponent={Select}
-    options={props.options || options}
-    />
-);
 
 export default class Educacion extends Component {
 
@@ -87,26 +73,26 @@ export default class Educacion extends Component {
 
         
         
-        if(e.value == 'Formal'){
+        if(e.target.value == 'Formal'){
             this.setState({
                 tipo: 
                     <div>
-                        <input type="radio" name="tipoEducacion" value="bachiller"/> Bachiller
-                        <input type="radio" name="tipoEducacion" value="tecnico"/> Técnico
-                        <input type="radio" name="tipoEducacion" value="certificacion"/> Certificación
-                        <input type="radio" name="tipoEducacion" value="grado"/> Grado
-                        <input type="radio" name="tipoEducacion" value="especialidad"/> Especialidad
-                        <input type="radio" name="tipoEducacion" value="master"/> Máster
-                        <input type="radio" name="tipoEducacion" value="doctorado"/> Doctorado
+                        <input type="radio" name="tipoEducacion" value="bachiller" required/> Bachiller
+                        <input type="radio" name="tipoEducacion" value="tecnico" required/> Técnico
+                        <input type="radio" name="tipoEducacion" value="certificacion" required/> Certificación
+                        <input type="radio" name="tipoEducacion" value="grado" required/> Grado
+                        <input type="radio" name="tipoEducacion" value="especialidad" required/> Especialidad
+                        <input type="radio" name="tipoEducacion" value="master" required/> Máster
+                        <input type="radio" name="tipoEducacion" value="doctorado" required/> Doctorado
                     </div>
             });
-        } else if (e.value == 'Continuada') {
+        } else if (e.target.value == 'Continuada') {
             this.setState({
                 tipo:                 
                     <div>
-                        <input type="radio" name="tipoEducacion" value="curso"/> Curso
-                        <input type="radio" name="tipoEducacion" value="taller"/> Taller
-                        <input type="radio" name="tipoEducacion" value="diplomado"/> Diplomado
+                        <input type="radio" name="tipoEducacion" value="curso" required/> Curso
+                        <input type="radio" name="tipoEducacion" value="taller" required/> Taller
+                        <input type="radio" name="tipoEducacion" value="diplomado" required/> Diplomado
                     </div>
             });
         }
@@ -174,6 +160,8 @@ export default class Educacion extends Component {
     }
 
     addEducacion(e){
+
+        e.preventDefault();
 
         if(this.state.tipoEducacion === 'grado') {
 
@@ -543,14 +531,10 @@ export default class Educacion extends Component {
                 <div className="row">
                     <div className="col">
                         <label>Tipo de educación</label>                       
-                        {/* <select onChange={this.onChangeEducacion} required>
-                            <option>Seleccione</option>
+                        <select onChange={this.onChangeEducacion} required>
+                            <option value="">Seleccione</option>
                             {this.state.educacion.map( e => <option key={e}>{e}</option>)}
-                        </select> */}
-
-                        {/* <Select options={options} required /> */}
-
-                        <UpperSelect options={options} required onChange={this.onChangeEducacion}/>
+                        </select>
 
                     </div>
                 </div>
