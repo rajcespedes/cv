@@ -267,7 +267,8 @@ export default class Experiencia extends Component {
             checkVoluntario: false,
             checkPasantia: false,
             checked: true,
-            fechaIngreso: ''
+            fechaIngreso: '',
+            fechaSalida: ''
         });
 
         // notes.value = '';
@@ -351,6 +352,7 @@ export default class Experiencia extends Component {
                             <label>Fecha Salida</label>
                             <input className="mx-1" type="date"     
                             onChange={this.onChangeFechaSalida}  
+                            value={this.state.fechaSalida}
                             disabled={!this.state.checked} 
                             required/> 
 

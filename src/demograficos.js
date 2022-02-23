@@ -1,7 +1,11 @@
 import { React, Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+
+const Check = () => {
+    const { history } = useHistory();
+}
 
 export default class Demograficos extends Component  {
 
@@ -96,9 +100,15 @@ export default class Demograficos extends Component  {
         });
     }
 
+   
     onSubmit(e){
         
         e.preventDefault();
+
+        // Check.history.push('/experiencia');
+
+       
+        // history.push('/experiencia');
 
         // console.log(e);
 
@@ -125,7 +135,18 @@ export default class Demograficos extends Component  {
         .then(res => console.log(res));
         
 
-        window.location = '/experiencia';
+        // window.location = '/experiencia';
+
+        Check.history({
+            pathname: '/experiencia',
+            state: {
+                passDatos: {
+                    nombres: this.state.nombres
+                }
+            }
+        });
+
+
 
     
     }
@@ -142,23 +163,27 @@ export default class Demograficos extends Component  {
             <div className="row mb-3">
                 <div className="col d-flex justify-content-center form-group">
                     <label>Nombres</label>
-                    <input onChange={this.onChangeNombre} type="text" value={this.state.nombres} />
+                    <input onChange={this.onChangeNombre} type="text" value={this.state.nombres} 
+                    required/>
 
                     <label>Apellidos</label>
-                    <input onChange={this.onChangeApellidos} type="text" value={this.state.apellidos}/>
+                    <input onChange={this.onChangeApellidos} type="text" value={this.state.apellidos}
+                    required/>
                 </div>
             </div>
             
              <div className="row mb-3">
                 <div className="col d-flex justify-content-center">
                     <label>Ocupación</label>
-                    <input onChange={this.onChangeOcupacion} type="text" name="ocupacion"/> 
+                    <input onChange={this.onChangeOcupacion} type="text" name="ocupacion"
+                    required/> 
                 </div>
             </div>
             <div className="row mb-3">
                 <div className="col d-flex justify-content-center">
                     <label>Barrio/Municipio</label>
-                    <input onChange={this.onChangeBarrio} type="text" name="barrio"/>
+                    <input onChange={this.onChangeBarrio} type="text" name="barrio"
+                    required/>
                 </div>  
             </div>
             <div className="row">
@@ -169,16 +194,17 @@ export default class Demograficos extends Component  {
             <div className="row mb-3">
                 <div className="col d-flex justify-content-center">
                     <label>Celular</label>
-                    <input onChange={this.onChangeCelular} type="text" name='celular'/>
+                    <input onChange={this.onChangeCelular} type="phone" name='celular'
+                    required/>
 
                     <label>Teléfono</label>
-                    <input onChange={this.onChangeTelefono} type="text" name="telefono"/>
+                    <input onChange={this.onChangeTelefono} type="phone" name="telefono"/>
                 </div> 
             </div>
             <div className="row mb-3">
                 <div className="col d-flex justify-content-center">
                     <label>Correo electrónico</label>
-                    <input onChange={this.onChangeEmail} type="text"/>
+                    <input onChange={this.onChangeEmail} type="email"/>
 
                 </div> 
             </div>
@@ -215,6 +241,11 @@ export default class Demograficos extends Component  {
             </div>
             <div className="row">
                 <div className="col d-flex justify-content-end">
+                    < button type="Submit" value='Prueba'> Submit </button>
+                    {/* <button type="submit" onClick={ () => history.push('/experiencia')} > */}
+                        {/* Probar
+                    </button> */}
+
                     <Link
                     className="btn btn-info"
                      to={
@@ -235,7 +266,10 @@ export default class Demograficos extends Component  {
                                 }
                             }
                         }
-                    }>Check</Link>
+                    }>
+                        Check
+                        </Link>
+                        
                 </div>
              </div>
             </form>

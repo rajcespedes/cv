@@ -21,7 +21,7 @@ export default class Educacion extends Component {
 
 
         this.state = {
-            educacion: ['Formal','Continuada'],
+            educacion: ['Seleccione','Formal','Continuada'],
             tipoEducacion: '',
             subtipoEducacion: '',
             tipo: [],
@@ -53,7 +53,8 @@ export default class Educacion extends Component {
             listBachiller: [],
             listDiplomado: [],
             listTaller: [],
-            listCurso: []
+            listCurso: [],
+            selectValue: ''
         }
 
     }
@@ -71,9 +72,12 @@ export default class Educacion extends Component {
 
     onChangeEducacion(e){
 
+        this.setState({
+            selectValue: e.target.value
+        })
         
         
-        if(e.target.value == 'Formal'){
+        if(e.target.value === 'Formal'){
             this.setState({
                 tipo: 
                     <div>
@@ -86,7 +90,7 @@ export default class Educacion extends Component {
                         <input type="radio" name="tipoEducacion" value="doctorado" required/> Doctorado
                     </div>
             });
-        } else if (e.target.value == 'Continuada') {
+        } else if (e.target.value === 'Continuada') {
             this.setState({
                 tipo:                 
                     <div>
@@ -515,6 +519,11 @@ export default class Educacion extends Component {
                 counter: this.state.counter + 1
             });
         }
+
+        this.setState({
+            selectValue: 'Seleccione'
+        })
+       
        
     }  
     
@@ -531,9 +540,11 @@ export default class Educacion extends Component {
                 <div className="row">
                     <div className="col">
                         <label>Tipo de educación</label>                       
-                        <select onChange={this.onChangeEducacion} required>
-                            <option value="">Seleccione</option>
-                            {this.state.educacion.map( e => <option key={e}>{e}</option>)}
+                        <select onChange={this.onChangeEducacion} 
+                        value={this.state.selectValue} 
+                        required>
+                            {/* <option value={this.state.tipo}>Seleccione</option> */}
+                            {this.state.educacion.map( e => <option value={e} key={e}>{e}</option>)}
                         </select>
 
                     </div>

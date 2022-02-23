@@ -6,14 +6,18 @@ import Experiencia from './experiencia';
 import Educacion from './educacion';
 import Competencias from './competencias';
 import Resumen from './resumen';
+import NewDemo from './newDemo';
+
 
 var browserHistory = [];
 
 function App() {
   return (
     <Router history={browserHistory}>
-      <Route path='/' exact component={Demograficos} />
+      {/* <Route path='/' exact component={Demograficos} /> */}
+      <Route path='/' exact component={NewDemo} />
       <Route path='/experiencia' component={Experiencia} />
+      <Route path='/educacion' component={Educacion} />
       <Route path='/educacion' component={Educacion} />
       <Route path='/competencias' component={Competencias}/>
       <Route path='/resumen' component={Resumen} />
