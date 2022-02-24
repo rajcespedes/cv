@@ -5,9 +5,16 @@ import { useHistory } from 'react-router-dom';
 
 const NewDemo = () => {
 
-    const [ nombres, setNombres ] = useState('');
+    const [ allValues, setAllValues ] = useState({
+        nombres: '',
+        apellidos: ''
+    });
 
     const { push } = useHistory();
+
+    const handleChange = (e) => {
+        setAllValues({...allValues, [e.target.name]: e.target.value})
+    }
 
     const handleSubmit = (e)=> {
         e.preventDefault();
@@ -16,15 +23,20 @@ const NewDemo = () => {
             pathname: '/experiencia',
             state: {
                 passDatos: {
-                    nombres: e.target.value
+                    nombres: allValues.nombres,
+                    apellidos: allValues.apellidos
                 }
             }
         });
     }
 
-    const onChangeNombre = (e) => {
-        setNombres({nombre: e.target.value});
-    }
+    // const onChangeNombre = (e) => {
+    //     setNombres({nombre: e.target.value});
+    // }
+
+    // const onChangeApellidos = (e) => {
+    //     set
+    // }
 
     return(
     <div className="container">
@@ -37,16 +49,18 @@ const NewDemo = () => {
                 <div className="row mb-3">
                     <div className="col d-flex justify-content-center form-group">
                         <label>Nombres</label>
-                        <input onChange={onChangeNombre} type="text" value={nombres} 
+                        <input onChange={handleChange} type="text" value={allValues.nombres} 
+                        name='nombres'
                         required/>
 
                         <label>Apellidos</label>
-                        <input onChange={this.onChangeApellidos} type="text" value={this.state.apellidos}
+                        <input onChange={handleChange} type="text" value={allValues.apellidos}
+                        name='apellidos'
                         required/>
                     </div>
                 </div>
                 
-                <div className="row mb-3">
+                {/* <div className="row mb-3">
                     <div className="col d-flex justify-content-center">
                         <label>Ocupación</label>
                         <input onChange={this.onChangeOcupacion} type="text" name="ocupacion"
@@ -112,7 +126,7 @@ const NewDemo = () => {
                             <input type="radio" value="No" name="traslado"/> <label>No</label>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="row">
                     <div className="col d-flex justify-content-end">
                         < button type="Submit" value='Prueba'> Submit </button>
