@@ -7,7 +7,15 @@ const NewDemo = () => {
 
     const [ allValues, setAllValues ] = useState({
         nombres: '',
-        apellidos: ''
+        apellidos: '',
+        ocupacion: '',
+        barrio:'',
+        celular:'',
+        telefono: '',
+        licencia: '',
+        email: '',
+        traslado: '',
+        vehiculo: ''
     });
 
     const { push } = useHistory();
@@ -24,7 +32,14 @@ const NewDemo = () => {
             state: {
                 passDatos: {
                     nombres: allValues.nombres,
-                    apellidos: allValues.apellidos
+                    apellidos: allValues.apellidos,
+                    ocupacion: allValues.ocupacion,
+                    barrio: allValues.barrio,
+                    celular: allValues.celular,
+                    telefono: allValues.telefono,
+                    email: allValues.email,
+                    traslado: allValues.traslado,
+                    vehiculo: allValues.vehiculo
                 }
             }
         });
@@ -49,28 +64,30 @@ const NewDemo = () => {
                 <div className="row mb-3">
                     <div className="col d-flex justify-content-center form-group">
                         <label>Nombres</label>
-                        <input onChange={handleChange} type="text" value={allValues.nombres} 
-                        name='nombres'
+                        <input onChange={handleChange} type="text" 
+                        value={allValues.nombres} name='nombres'
                         required/>
 
                         <label>Apellidos</label>
-                        <input onChange={handleChange} type="text" value={allValues.apellidos}
-                        name='apellidos'
+                        <input onChange={handleChange} type="text" 
+                        value={allValues.apellidos} name='apellidos'
                         required/>
                     </div>
                 </div>
                 
-                {/* <div className="row mb-3">
+                 <div className="row mb-3">
                     <div className="col d-flex justify-content-center">
                         <label>Ocupación</label>
-                        <input onChange={this.onChangeOcupacion} type="text" name="ocupacion"
+                        <input onChange={handleChange} type="text" name="ocupacion"
+                        value={allValues.ocupacion}
                         required/> 
                     </div>
                 </div>
                 <div className="row mb-3">
                     <div className="col d-flex justify-content-center">
                         <label>Barrio/Municipio</label>
-                        <input onChange={this.onChangeBarrio} type="text" name="barrio"
+                        <input onChange={handleChange} type="text" name="barrio"
+                        value={allValues.barrio}
                         required/>
                     </div>  
                 </div>
@@ -82,24 +99,27 @@ const NewDemo = () => {
                 <div className="row mb-3">
                     <div className="col d-flex justify-content-center">
                         <label>Celular</label>
-                        <input onChange={this.onChangeCelular} type="phone" name='celular'
+                        <input onChange={handleChange} type="phone" name='celular'
+                        value={allValues.celular}
                         required/>
 
                         <label>Teléfono</label>
-                        <input onChange={this.onChangeTelefono} type="phone" name="telefono"/>
+                        <input onChange={handleChange} type="phone" 
+                        name="telefono" value={allValues.telefono}/>
                     </div> 
                 </div>
                 <div className="row mb-3">
                     <div className="col d-flex justify-content-center">
                         <label>Correo electrónico</label>
-                        <input onChange={this.onChangeEmail} type="email"/>
+                        <input onChange={handleChange} type="email"
+                        name='email' value={allValues.email}/>
 
                     </div> 
                 </div>
                 <div className="row mb-3">
                     <div className="col d-flex justify-content-center">
                         <label>Licencia de conducir</label>
-                        <select onChange={this.onChangeLicencia} >
+                        <select onChange={handleChange} name='licencia' >
                             <option value="0">No tengo</option>
                             <option value="1">Motores (Cat 1)</option>
                             <option value="2">Vehículos livianos (Cat 2)</option>
@@ -112,7 +132,7 @@ const NewDemo = () => {
                 <div className="row">
                     <div className="col d-flex justify-content-center">
                         <label>Vehículo propio</label>
-                        <div onChange={this.onChangeVehiculo}>
+                        <div onChange={handleChange}>
                             <input type="radio" value="Si"  name="vehiculo"/> <label>Si</label>
                             <input type="radio" value="No" name="vehiculo"/> <label>No</label>
                         </div>
@@ -121,12 +141,13 @@ const NewDemo = () => {
                 <div className="row mb-3">
                     <div className="col d-flex justify-content-center">
                         <label>Disponibilidad de traslado</label>
-                        <div onChange={this.onChangeTraslado}>
+                        <div onChange={handleChange}>
                             <input type="radio" value="Si"  name="traslado"/> <label>Si</label>
                             <input type="radio" value="No" name="traslado"/> <label>No</label>
                         </div>
                     </div>
-                </div> */}
+                </div> 
+    
                 <div className="row">
                     <div className="col d-flex justify-content-end">
                         < button type="Submit" value='Prueba'> Submit </button>
