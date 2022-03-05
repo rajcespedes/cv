@@ -18,7 +18,6 @@ function App() {
       <Route path='/' exact component={NewDemo} />
       <Route path='/experiencia' component={Experiencia} />
       <Route path='/educacion' component={Educacion} />
-      <Route path='/educacion' component={Educacion} />
       <Route path='/competencias' component={Competencias}/>
       <Route path='/resumen' component={Resumen} />
     </Router>

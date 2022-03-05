@@ -5,7 +5,7 @@ import IdiomasComponent from './idioma-component';
 import ReferenciaComponent from './referencia-component';
 import ProyectoComponent from './proyecto-component';
 import { Link } from 'react-router-dom';
-
+import Competencia from './agrega-competencia';
 
 export default class Competencias extends Component {
 
@@ -60,7 +60,8 @@ export default class Competencias extends Component {
     }
 
     componentDidMount(){
-        console.log(this.props.location.state.passDatos);
+        // console.log(this.props.location.state.passDatos);
+        // console.log('validando ', this.props.location.state.passDatos.nombres);
     }
 
     ratingChanged(e){
@@ -134,10 +135,14 @@ export default class Competencias extends Component {
 
     addCompetencia(e){
 
+        e.preventDefault();
+
         var competenciaArray = this.state.competenciaList;
 
         // var listCompetenciaArray = this.state.listCompetencia;
        
+        // console.log(this.props.location.state.passDatos);
+
         competenciaArray.unshift(
             this.state.competencia
         );
@@ -209,6 +214,8 @@ export default class Competencias extends Component {
 
     addReferencia(e){
 
+        e.preventDefault();
+
         if(this.state.tipoReferencia == 'Laboral') {
 
             var referenciaArray = this.state.referenciaList;
@@ -276,13 +283,11 @@ export default class Competencias extends Component {
     render() {
         return(
             <div>
-                <div className='row'>
-                    <div className='col'>
-                      <h1>Competencias</h1>  
-                      <input placeholder='Competencia' type="text" onChange={this.onChangeCompetencia} /> 
-                      <button className="ml-5 btn btn-info btn-sm" onClick={this.addCompetencia}>Agregar habilidad</button>
-                    </div>
-                </div>
+                <Competencia idiomas={this.state.idiomas} 
+                idiomaLev={this.state.idiomaLevel} 
+                competenciasList={this.state.competenciaList}
+                counter={this.state.counter}/>
+
                 <div className="row">
                     <div className="col">
                         <ul>
@@ -291,29 +296,7 @@ export default class Competencias extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col">
-                        <h3>Idiomas</h3>
-                        <select onChange={this.onChangeIdioma}>
-                            <option>Seleccione</option>
-                            {this.state.idiomas.map( e => <option value={e}>{e}</option>)}
-                        </select>
-                    </div>
-                    <div className="col">
-                        <h3>Nivel</h3>
-                        <ReactStars 
-                        count={3}
-                        size={40}
-                        onChange={this.ratingChanged}
-                        />
-                    </div>
-                    <div className="col d-flex align-items-end">
-                        {this.state.idiomaLevel == 1 ? <label>Bajo</label> : 
-                        this.state.idiomaLevel == 2 ? <label>Medio</label> : 
-                        this.state.idiomaLevel == 3 ? <label>Alto</label> : '' }
-                    </div>
-                    <div className="col d-flex align-items-center">
-                        <button className="ml-5 btn btn-info btn-sm" onClick={this.addIdioma}>Agregar idioma</button>
-                    </div>
+                    
                 </div>
                 <div className="row mt-5">
                     <div className="col">
@@ -430,7 +413,7 @@ export default class Competencias extends Component {
                     </div>
                 </div>
                 <div>
-                    <Link 
+                    {/* <Link 
                     className="btn btn-success"
                     to={
                         {
@@ -475,7 +458,7 @@ export default class Competencias extends Component {
                     }
                     >
                         Finalizar
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
         );

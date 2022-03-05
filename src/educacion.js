@@ -167,6 +167,14 @@ export default class Educacion extends Component {
 
         e.preventDefault();
 
+        console.log("Resultado", this.state.curso.length ||
+        this.state.curso.length || this.state.diplomado.length || 
+                        this.state.doctorado.length || this.state.especialidad.length ||
+                        this.state.grado.length || this.state.maestria.length || 
+                        this.state.taller.length || this.state.tecnico.length ||
+                        this.state.certificacion.length
+                        )
+
         if(this.state.tipoEducacion === 'grado') {
 
             var educacionArray = this.state.educacionList;
@@ -277,7 +285,7 @@ export default class Educacion extends Component {
             
             var doctoradoArray = this.state.doctorado;
 
-            var listDoctoradoArray = this.state.doctorado;
+            var listDoctoradoArray = this.state.listDoctorado;
 
             doctoradoArray.unshift(
                     <EducacionElement 
@@ -304,7 +312,7 @@ export default class Educacion extends Component {
 
             this.setState({
                 doctorado: doctoradoArray,
-                listDoctoradoArray: listDoctoradoArray,
+                listDoctorado: listDoctoradoArray,
                 counter: this.state.counter + 1
             });
 
@@ -448,15 +456,15 @@ export default class Educacion extends Component {
                 counter: this.state.counter + 1
             });
 
-        } else if (this.state.tipoEducacion == 'curso') {
+        } else if (this.state.tipoEducacion === 'curso') {
 
             var cursoArray = this.state.curso;
 
-            var listCursoArray = this.state.curso;
+            var listCursoArray = this.state.listCurso;
 
             cursoArray.unshift(
                 <EducacionElement 
-                key={'e' + this.state.counter}
+                key={'z' + this.state.counter}
                 titulo={this.state.titulo}
                 tipoEducacion={this.state.tipoEducacion}
                 subtipoEducacion={this.state.subtipoEducacion}
@@ -465,7 +473,7 @@ export default class Educacion extends Component {
                 institucion={this.state.institucion}
                 logro={this.state.logro}
                 /> 
-            );
+            );            
 
             listCursoArray.unshift({
                 tituloCurso: this.state.titulo,
@@ -479,9 +487,11 @@ export default class Educacion extends Component {
 
             this.setState({
                 curso: cursoArray,
-                listCursoArray: listCursoArray,
+                listCurso: listCursoArray,
                 counter: this.state.counter + 1
             });
+
+            console.log('Resultado despues', this.state.curso.length);
 
         }
         else {
@@ -541,10 +551,12 @@ export default class Educacion extends Component {
                     <div className="col">
                         <label>Tipo de educación</label>                       
                         <select onChange={this.onChangeEducacion} 
-                        value={this.state.selectValue} 
+                        // value={this.state.selectValue} 
                         required>
                             {/* <option value={this.state.tipo}>Seleccione</option> */}
-                            {this.state.educacion.map( e => <option value={e} key={e}>{e}</option>)}
+                            {this.state.educacion.map( e => 
+                            <option value={e == "Seleccione" ? "" : e} 
+                            key={e}>{e}</option>)}
                         </select>
 
                     </div>
@@ -560,17 +572,21 @@ export default class Educacion extends Component {
                         onChange={this.onChangeTitulo} required/>
                     </div>
                     <div className="col">
-                        <input type="text" placeholder="Institución" name='institucion' onChange={this.onChangeInstitucion} />
+                        <input type="text" placeholder="Institución" name='institucion'
+                         onChange={this.onChangeInstitucion} required/>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col">
                         <label>Fecha Inicio</label>
-                        <input type="date" name='fechaInicio' onChange={this.onChangeFechaInicio}/>
+                        <input type="date" name='fechaInicio' 
+                        onChange={this.onChangeFechaInicio} required/>
                     </div>
                     <div className="col">
                         <label>Fecha Fin</label>
-                        <input type="date" name='fechaFin' disabled={!this.state.encurso} onChange={this.onChangeFechaFin}/>
+                        <input type="date" name='fechaFin' disabled={!this.state.encurso}
+                         onChange={this.onChangeFechaFin}
+                         required={this.state.encurso}/>
                         En curso <input type='checkbox' onChange={this.onChangeEnCurso}/>
                     </div>
                 </div>
@@ -697,11 +713,14 @@ export default class Educacion extends Component {
                 </div>
                 <div className='row'>
                     <div className='col'>
-                        { this.state.curso > 0 || this.state.diplomado > 0 || 
-                        this.state.doctorado > 0 || this.state.especialidad > 0 ||
-                        this.state.grado > 0 || this.state.maestria > 0 || 
-                        this.state.taller > 0 || this.state.tecnico > 0  ||
-                        this.state.certificacion ? 
+                        { this.state.curso.length > 0 
+                        || this.state.diplomado.length > 0  
+                        || 
+                        this.state.doctorado.length > 0 || this.state.especialidad.length > 0  ||
+                        this.state.grado.length > 0  || this.state.maestria.length > 0  || 
+                        this.state.taller.length > 0 || this.state.tecnico.length > 0  ||
+                        this.state.certificacion.length > 0 
+                        ? 
                         <Link 
                         className="btn btn-info"
                         to = {

@@ -369,8 +369,8 @@ export default class Experiencia extends Component {
                 </form>
                 <div className="row">
                     <div className="col">
-                    { this.state.list.length 
-                    || this.state.voluntariado.length 
+                    { this.state.list.length > 0
+                    || this.state.voluntariado.length > 0
                     || this.state.pasantia.length > 0 ? <h1>Historial</h1> : '' }
                     </div>
                 </div>
@@ -394,6 +394,9 @@ export default class Experiencia extends Component {
                 </div>
                 <div className="row">
                     <div className="col d-flex justify-content-end">
+                        { this.state.list.length > 0
+                    || this.state.voluntariado.length > 0
+                    || this.state.pasantia.length > 0 ? 
                         <Link 
                         className="btn btn-info"
                         to={
@@ -420,7 +423,7 @@ export default class Experiencia extends Component {
                                 }
                             }
                         } >Continuar test</Link>
-
+                        : "" }   
                     </div>
                 </div>
             </div>
