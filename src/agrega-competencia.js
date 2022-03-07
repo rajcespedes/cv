@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import ReactStars from 'react-rating-stars-component';
 
 
 const Competencia = (props) => {
+
+    const [competencia, setCompetencia] = useState('');
 
     const ratingChanged = (e) => {
         this.setState({
@@ -11,14 +13,19 @@ const Competencia = (props) => {
     }
 
     const addIdioma = (e) => {
+        e.preventDefault();
+
         this.setState({
             addIdioma: e
         });
+
+        console.log(this.state.idiomaLevel, this.state.addIdioma);
     }
 
     const onChangeCompetencia = e => {
-        this.setState({
-            competencia: e
+        // console.log(e.target.value);
+        setCompetencia({
+            competencia: e.target.value
         });
     }
 
@@ -81,7 +88,7 @@ const Competencia = (props) => {
                         props.idiomaLevel == 3 ? <label>Alto</label> : '' }
                     </div>
                     <div className="col d-flex align-items-center">
-                        <button className="ml-5 btn btn-info btn-sm" onClick={addIdioma}>Agregar idioma</button>
+                        <button className="ml-5 btn btn-info btn-sm" type="submit" onClick={addIdioma}>Agregar idioma</button>
                     </div>
                 </form>
             </div>
