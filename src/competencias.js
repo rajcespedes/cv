@@ -139,7 +139,7 @@ export default class Competencias extends Component {
 
         var competenciaArray = this.state.competenciaList;
 
-        // var listCompetenciaArray = this.state.listCompetencia;
+        var listCompetenciaArray = this.state.listCompetencia;
        
         // console.log(this.props.location.state.passDatos);
 
@@ -147,7 +147,7 @@ export default class Competencias extends Component {
             this.state.competencia
         );
 
-        // listCompetenciaArray.unshift(this.state.competencia);
+        listCompetenciaArray.unshift(this.state.competencia);
 
         this.setState({
             competenciaList: competenciaArray,
@@ -283,10 +283,50 @@ export default class Competencias extends Component {
     render() {
         return(
             <div>
-                <Competencia idiomas={this.state.idiomas} 
+                {/* <Competencia idiomas={this.state.idiomas} 
                 idiomaLev={this.state.idiomaLevel} 
                 competenciasList={this.state.competenciaList}
-                counter={this.state.counter}/>
+                counter={this.state.counter}/> */}
+
+                <div>
+                    <div>
+                      <h1>Competencias</h1>  
+                      <input placeholder='Competencia' type="text" onChange={this.onChangeCompetencia} /> 
+                      <button className="ml-5 btn btn-info btn-sm" onClick={this.addCompetencia}>Agregar habilidad</button>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                        <ul>
+                            {this.state.competenciaList.map( e => <li key={e}>{e}</li>)}
+                        </ul>
+                    </div>
+                </div>
+                <div className="col">
+                    <h3>Idiomas</h3>
+                        <select>
+                            <option>Seleccione</option>
+                            {this.state.idiomas.map( e => <option value={e}>{e}</option>)}
+                        </select>
+                    </div>
+                    <div className="col">
+                        <h3>Nivel</h3>
+                        <ReactStars 
+                        count={3}
+                        size={40}
+                        onChange={this.ratingChanged}
+                        />
+                    </div>
+                    <div className="col d-flex align-items-end">
+                        {this.state.idiomaLevel == 1 ? <label>Bajo</label> : 
+                        this.state.idiomaLevel == 2 ? <label>Medio</label> : 
+                        this.state.idiomaLevel == 3 ? <label>Alto</label> : '' }
+                    </div>
+                    <div className="col d-flex align-items-center">
+                        <button className="ml-5 btn btn-info btn-sm" onClick={this.addIdioma}>Agregar idioma</button>
+                    </div>
+                {this.state.competencia}
+
 
                 <div className="row">
                     <div className="col">

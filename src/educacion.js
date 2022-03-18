@@ -148,9 +148,17 @@ export default class Educacion extends Component {
 
     onChangeFechaFin(e){
 
-        this.setState({
-            fechaFin: e.target.value
-        });
+        if(this.state.fechaInicio > e.target.value){
+            alert('Fecha de salida debe ser mayor a fecha de ingreso');
+            this.setState({
+                fechaFin: ''
+            });             
+        } else {
+            this.setState({
+                fechaFin: e.target.value
+            });
+        }
+
     }
 
     onChangeLogro(e){
@@ -712,7 +720,7 @@ export default class Educacion extends Component {
                     </div>
                 </div>
                 <div className='row'>
-                    <div className='col'>
+                    <div className="col d-flex justify-content-end">
                         { this.state.curso.length > 0 
                         || this.state.diplomado.length > 0  
                         || 

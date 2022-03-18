@@ -22,7 +22,7 @@ const Competencia = (props) => {
         console.log(this.state.idiomaLevel, this.state.addIdioma);
     }
 
-    const onChangeCompetencia = e => {
+    const onChangeCompetencia = (e) => {
         // console.log(e.target.value);
         setCompetencia({
             competencia: e.target.value
@@ -30,6 +30,8 @@ const Competencia = (props) => {
     }
 
     const addCompetencia = e => {
+
+            e.preventDefault();
 
             var competenciaArray = props.competenciaList;
     
@@ -52,12 +54,12 @@ const Competencia = (props) => {
     
         return(
             <div>
-                <form>
+                <form onSubmit={addCompetencia}>
                 <div className='row'>
                     <div className='col'>
                       <h1>Competencias</h1>  
                       <input placeholder='Competencia' type="text" onChange={onChangeCompetencia} /> 
-                      <button className="ml-5 btn btn-info btn-sm" onClick={addCompetencia}>Agregar habilidad</button>
+                      <button className="ml-5 btn btn-info btn-sm" type="submit">Agregar habilidad</button>
                     </div>
                 </div>
                 <div className="row">
@@ -88,9 +90,10 @@ const Competencia = (props) => {
                         props.idiomaLevel == 3 ? <label>Alto</label> : '' }
                     </div>
                     <div className="col d-flex align-items-center">
-                        <button className="ml-5 btn btn-info btn-sm" type="submit" onClick={addIdioma}>Agregar idioma</button>
+                        <button className="ml-5 btn btn-info btn-sm" onClick={addIdioma}>Agregar idioma</button>
                     </div>
                 </form>
+                {this.state.competencia}
             </div>
         )
     }

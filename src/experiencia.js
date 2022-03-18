@@ -76,9 +76,19 @@ export default class Experiencia extends Component {
     }
 
     onChangeFechaSalida(e){
-        this.setState({
-            fechaSalida: e.target.value
-        });
+
+        if (this.state.fechaIngreso > e.target.value) {
+            alert('Fecha de salida debe ser mayor a fecha de ingreso');
+            this.setState({
+                fechaSalida: ''
+            });
+        } else {
+            this.setState({
+                fechaSalida: e.target.value
+            });
+        }
+
+
         
     }
 
