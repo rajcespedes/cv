@@ -78,7 +78,7 @@ export default class Experiencia extends Component {
     onChangeFechaSalida(e){
 
         if (this.state.fechaIngreso > e.target.value) {
-            alert('Fecha de salida debe ser mayor a fecha de ingreso');
+            alert('Fecha de salida debe ser mayor o igual a fecha de ingreso');
             this.setState({
                 fechaSalida: ''
             });
@@ -278,7 +278,8 @@ export default class Experiencia extends Component {
             checkPasantia: false,
             checked: true,
             fechaIngreso: '',
-            fechaSalida: ''
+            fechaSalida: '',
+            tipo: ''
         });
 
         // notes.value = '';
@@ -302,22 +303,25 @@ export default class Experiencia extends Component {
 
                             <input type="radio" name="tipoExperiencia" 
                             value='laboral'
-                            onClick={ () => this.setState({checkLaboral: true })}
-                            checked={this.state.checkLaboral}
+                            // onClick={ () => this.setState({checkLaboral: true })}
+                            checked={this.state.tipo === 'laboral'} 
                             required
                             /> Laboral
 
                             <input type="radio" name="tipoExperiencia" 
                             value='voluntariado' className="ml-1"
-                            onClick={ () => this.setState({checkVoluntario: true })}
-                            checked={this.state.checkVoluntario}
+                            // onClick={ 
+                            //     () => this.setState()
+                                // this.setState({checkVoluntario: true 
+                                // }
+                            checked={this.state.tipo === 'voluntariado' }
                             required
                             /> Voluntariado
 
                             <input type="radio" name="tipoExperiencia" 
                             value='pasantia' className="ml-1"
-                            onClick={ () => this.setState({checkPasantia: true })}
-                            checked={this.state.checkPasantia}
+                            // onClick={ () => this.setState({checkPasantia: true })}
+                            checked={this.state.tipo === 'pasantia'}
                             required
                             /> Pasantía
                         </div>

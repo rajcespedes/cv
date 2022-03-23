@@ -149,7 +149,7 @@ export default class Educacion extends Component {
     onChangeFechaFin(e){
 
         if(this.state.fechaInicio > e.target.value){
-            alert('Fecha de salida debe ser mayor a fecha de ingreso');
+            alert('Fecha de salida debe ser igual o mayor a fecha de ingreso');
             this.setState({
                 fechaFin: ''
             });             
@@ -539,7 +539,8 @@ export default class Educacion extends Component {
         }
 
         this.setState({
-            selectValue: 'Seleccione'
+            selectValue: 'Seleccione',
+            
         })
        
        
@@ -594,6 +595,7 @@ export default class Educacion extends Component {
                         <label>Fecha Fin</label>
                         <input type="date" name='fechaFin' disabled={!this.state.encurso}
                          onChange={this.onChangeFechaFin}
+                         value={this.state.fechaFin}
                          required={this.state.encurso}/>
                         En curso <input type='checkbox' onChange={this.onChangeEnCurso}/>
                     </div>
