@@ -77,29 +77,34 @@ export default class Educacion extends Component {
         })
         
         
-        if(e.target.value === 'Formal'){
-            this.setState({
-                tipo: 
-                    <div>
-                        <input type="radio" name="tipoEducacion" value="bachiller" required/> Bachiller
-                        <input type="radio" name="tipoEducacion" value="tecnico" required/> Técnico
-                        <input type="radio" name="tipoEducacion" value="certificacion" required/> Certificación
-                        <input type="radio" name="tipoEducacion" value="grado" required/> Grado
-                        <input type="radio" name="tipoEducacion" value="especialidad" required/> Especialidad
-                        <input type="radio" name="tipoEducacion" value="master" required/> Máster
-                        <input type="radio" name="tipoEducacion" value="doctorado" required/> Doctorado
-                    </div>
-            });
-        } else if (e.target.value === 'Continuada') {
-            this.setState({
-                tipo:                 
-                    <div>
-                        <input type="radio" name="tipoEducacion" value="curso" required/> Curso
-                        <input type="radio" name="tipoEducacion" value="taller" required/> Taller
-                        <input type="radio" name="tipoEducacion" value="diplomado" required/> Diplomado
-                    </div>
-            });
-        }
+        // if(e.target.value === 'Formal'){
+        //     this.setState({
+        //         tipo: 
+        //             <div>
+        //                 <input type="radio" name="tipoEducacion" 
+        //                 value="bachiller" required
+        //                 checked={this.state.tipoEducacion === 'bachiller'}/> Bachiller
+        //                 <input type="radio" name="tipoEducacion" value="tecnico"
+        //                 checked={this.state.tipoEducacion === 'tecnico'} 
+        //                 required/> Técnico
+        //                 <input type="radio" name="tipoEducacion" value="certificacion" required/> Certificación
+        //                 <input type="radio" name="tipoEducacion" value="grado" required/> Grado
+        //                 <input type="radio" name="tipoEducacion" value="especialidad" required/> Especialidad
+        //                 <input type="radio" name="tipoEducacion" value="master" required/> Máster
+        //                 <input type="radio" name="tipoEducacion" value="doctorado" required/> Doctorado
+        //             </div>
+        //     });
+        // } 
+        // else if (e.target.value === 'Continuada') {
+        //     this.setState({
+        //         tipo:                 
+        //             <div>
+        //                 <input type="radio" name="tipoEducacion" value="curso" required/> Curso
+        //                 <input type="radio" name="tipoEducacion" value="taller" required/> Taller
+        //                 <input type="radio" name="tipoEducacion" value="diplomado" required/> Diplomado
+        //             </div>
+        //     });
+        // }
 
     }
 
@@ -540,7 +545,7 @@ export default class Educacion extends Component {
 
         this.setState({
             selectValue: 'Seleccione',
-            
+            tipoEducacion: ''
         })
        
        
@@ -572,7 +577,25 @@ export default class Educacion extends Component {
                 </div>
                 <div className="row">
                     <div className='col' onChange={this.onChangeTipoEducacion} >
-                        {this.state.tipo}
+                        {/* {this.state.tipo} */}
+                        <div className={this.state.selectValue === 'Formal' ? '' : 'd-none'}>
+                           <input type="radio" name="tipoEducacion" 
+                           value="bachiller" required
+                           checked={this.state.tipoEducacion === 'bachiller'}/> Bachiller
+                           <input type="radio" name="tipoEducacion" value="tecnico"
+                           checked={this.state.tipoEducacion === 'tecnico'} 
+                           required/> Técnico
+                           <input type="radio" name="tipoEducacion" value="certificacion" required/> Certificación
+                           <input type="radio" name="tipoEducacion" value="grado" required/> Grado
+                           <input type="radio" name="tipoEducacion" value="especialidad" required/> Especialidad
+                           <input type="radio" name="tipoEducacion" value="master" required/> Máster
+                           <input type="radio" name="tipoEducacion" value="doctorado" required/> Doctorado
+                        </div>
+                        <div className={this.state.selectValue === 'Continuada' ? '' : 'd-none'}>
+                           <input type="radio" name="tipoEducacion" value="curso" required/> Curso
+                           <input type="radio" name="tipoEducacion" value="taller" required/> Taller
+                           <input type="radio" name="tipoEducacion" value="diplomado" required/> Diplomado
+                        </div>
                     </div>
                 </div>
                 <div className="row">
