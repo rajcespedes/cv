@@ -568,9 +568,17 @@ export default class Educacion extends Component {
                         // value={this.state.selectValue} 
                         required>
                             {/* <option value={this.state.tipo}>Seleccione</option> */}
-                            {this.state.educacion.map( e => 
-                            <option value={e == "Seleccione" ? "" : e} 
-                            key={e}>{e}</option>)}
+                            {/* {this.state.educacion.map( e =>  */}
+                            {/* // <option value={e == "Seleccione" ? "" : e}  */}
+                            {/* // key={e} selected={this.state.selectValue == 'Seleccione' ? 'selected' : '' }>{e}</option>)} */}
+                            <option value={this.state.educacion[0]} key={this.state.educacion[0]}
+                             selected={this.state.selectValue == 'Seleccione' ? 'selected': ''}>
+                                {this.state.educacion[0]}
+                            </option>
+                            <option value={this.state.educacion[1]} key={this.state.educacion[1]}>
+                                {this.state.educacion[1]}
+                            </option>
+                            <option></option>
                         </select>
 
                     </div>
