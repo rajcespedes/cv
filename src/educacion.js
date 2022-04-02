@@ -1,7 +1,7 @@
 import { React, Component } from 'react';
 import EducacionElement from './educacion-element';
 import { Link } from 'react-router-dom';
-import Select from 'react-select';
+// import Select from 'react-select';
 
 export default class Educacion extends Component {
 
@@ -167,7 +167,9 @@ export default class Educacion extends Component {
     }
 
     onChangeLogro(e){
-        var regEx = /\w+/g;
+        // var regEx = /\w+/g;
+
+        var regEx = /.+/g;
         
         this.setState({
             logro: e.target.value.match(regEx)
@@ -179,14 +181,6 @@ export default class Educacion extends Component {
     addEducacion(e){
 
         e.preventDefault();
-
-        console.log("Resultado", this.state.curso.length ||
-        this.state.curso.length || this.state.diplomado.length || 
-                        this.state.doctorado.length || this.state.especialidad.length ||
-                        this.state.grado.length || this.state.maestria.length || 
-                        this.state.taller.length || this.state.tecnico.length ||
-                        this.state.certificacion.length
-                        )
 
         if(this.state.tipoEducacion === 'grado') {
 
@@ -504,8 +498,6 @@ export default class Educacion extends Component {
                 counter: this.state.counter + 1
             });
 
-            console.log('Resultado despues', this.state.curso.length);
-
         }
         else {
 
@@ -544,10 +536,15 @@ export default class Educacion extends Component {
         }
 
         this.setState({
-            selectValue: 'Seleccione',
-            tipoEducacion: ''
+            selectValue: '',
+            tipoEducacion: '',
+            titulo: '',
+            institucion: '',
+            fechaInicio: '',
+            fechaFin: ''
+            
         })
-       
+        console.log('Resultado despues', this.state.gradoList);
        
     }  
     
@@ -564,21 +561,21 @@ export default class Educacion extends Component {
                 <div className="row">
                     <div className="col">
                         <label>Tipo de educación</label>                       
-                        <select onChange={this.onChangeEducacion} 
-                        // value={this.state.selectValue} 
-                        required>
-                            {/* <option value={this.state.tipo}>Seleccione</option> */}
-                            {/* {this.state.educacion.map( e =>  */}
-                            {/* // <option value={e == "Seleccione" ? "" : e}  */}
-                            {/* // key={e} selected={this.state.selectValue == 'Seleccione' ? 'selected' : '' }>{e}</option>)} */}
-                            <option value={this.state.educacion[0]} key={this.state.educacion[0]}
-                             selected={this.state.selectValue == 'Seleccione' ? 'selected': ''}>
+                        <select onChange={this.onChangeEducacion} required>
+                            <option  
+                            value=''
+                            key={this.state.educacion[0]}
+                             selected={this.state.selectValue == '' ? 'selected': ''}>
                                 {this.state.educacion[0]}
                             </option>
-                            <option value={this.state.educacion[1]} key={this.state.educacion[1]}>
+                            <option value={this.state.educacion[1]} key={this.state.educacion[1]}
+                            selected={this.state.selectValue == 'Formal' ? 'selected': ''}>
                                 {this.state.educacion[1]}
                             </option>
-                            <option></option>
+                            <option value={this.state.educacion[2]} key={this.state.educacion[2]}
+                            selected={this.state.selectValue == 'Continuada' ? 'selected': ''}>
+                                {this.state.educacion[2]}
+                            </option>
                         </select>
 
                     </div>
@@ -593,33 +590,43 @@ export default class Educacion extends Component {
                            <input type="radio" name="tipoEducacion" value="tecnico"
                            checked={this.state.tipoEducacion === 'tecnico'} 
                            required/> Técnico
-                           <input type="radio" name="tipoEducacion" value="certificacion" required/> Certificación
-                           <input type="radio" name="tipoEducacion" value="grado" required/> Grado
-                           <input type="radio" name="tipoEducacion" value="especialidad" required/> Especialidad
-                           <input type="radio" name="tipoEducacion" value="master" required/> Máster
-                           <input type="radio" name="tipoEducacion" value="doctorado" required/> Doctorado
+                           <input type="radio" name="tipoEducacion" value="certificacion" 
+                           checked={this.state.tipoEducacion === 'certificacion'} required/> Certificación
+                           <input type="radio" name="tipoEducacion" value="grado"
+                           checked={this.state.tipoEducacion === 'grado'} required/> Grado
+                           <input type="radio" name="tipoEducacion" value="especialidad" 
+                           checked={this.state.tipoEducacion === 'especialidad'} required/> Especialidad
+                           <input type="radio" name="tipoEducacion" value="master"
+                           checked={this.state.tipoEducacion === 'master'} required/> Máster
+                           <input type="radio" name="tipoEducacion" value="doctorado"
+                           checked={this.state.tipoEducacion === 'doctorado'}  required/> Doctorado
                         </div>
                         <div className={this.state.selectValue === 'Continuada' ? '' : 'd-none'}>
-                           <input type="radio" name="tipoEducacion" value="curso" required/> Curso
-                           <input type="radio" name="tipoEducacion" value="taller" required/> Taller
-                           <input type="radio" name="tipoEducacion" value="diplomado" required/> Diplomado
+                           <input type="radio" name="tipoEducacion" value="curso"
+                           checked={this.state.tipoEducacion === 'curso'} required/> Curso
+                           <input type="radio" name="tipoEducacion" value="taller" 
+                           checked={this.state.tipoEducacion === 'taller'} required/> Taller
+                           <input type="radio" name="tipoEducacion" value="diplomado"
+                           checked={this.state.tipoEducacion === 'diplomado'} required/> Diplomado
                         </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col">
                         <input type="text" placeholder="Título" name='titulo' 
-                        onChange={this.onChangeTitulo} required/>
+                        onChange={this.onChangeTitulo} value={this.state.titulo} required/>
+
                     </div>
                     <div className="col">
                         <input type="text" placeholder="Institución" name='institucion'
-                         onChange={this.onChangeInstitucion} required/>
+                         onChange={this.onChangeInstitucion} value={this.state.institucion} required/>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col">
                         <label>Fecha Inicio</label>
                         <input type="date" name='fechaInicio' 
+                        value={this.state.fechaInicio}
                         onChange={this.onChangeFechaInicio} required/>
                     </div>
                     <div className="col">
@@ -643,7 +650,6 @@ export default class Educacion extends Component {
                 </div>
                 <div className="row">
                     <div className="col d-flex justify-content-end">
-                        {/* <button className="btn btn-info" onClick={this.addEducacion} >Agregar</button> */}
                         <input type="submit" value="agregar"/>
                     </div>
                 </div>
@@ -757,10 +763,10 @@ export default class Educacion extends Component {
                         { this.state.curso.length > 0 
                         || this.state.diplomado.length > 0  
                         || 
-                        this.state.doctorado.length > 0 || this.state.especialidad.length > 0  ||
-                        this.state.grado.length > 0  || this.state.maestria.length > 0  || 
-                        this.state.taller.length > 0 || this.state.tecnico.length > 0  ||
-                        this.state.certificacion.length > 0 
+                        this.state.listDoctorado.length > 0 || this.state.listEspecialidad.length > 0  ||
+                        this.state.listGrado.length > 0  || this.state.listMaestria.length > 0  || 
+                        this.state.listTaller.length > 0 || this.state.listTecnico.length > 0  ||
+                        this.state.listCertificacion.length > 0 
                         ? 
                         <Link 
                         className="btn btn-info"
