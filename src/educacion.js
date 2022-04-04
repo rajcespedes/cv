@@ -54,7 +54,8 @@ export default class Educacion extends Component {
             listDiplomado: [],
             listTaller: [],
             listCurso: [],
-            selectValue: ''
+            selectValue: '',
+            educacionLogros:''
         }
 
     }
@@ -167,12 +168,12 @@ export default class Educacion extends Component {
     }
 
     onChangeLogro(e){
-        // var regEx = /\w+/g;
 
         var regEx = /.+/g;
         
         this.setState({
-            logro: e.target.value.match(regEx)
+            logro: e.target.value.match(regEx),
+            educacionLogros: e.target.value
         });
 
         console.log(this.state.logro);
@@ -218,11 +219,11 @@ export default class Educacion extends Component {
                 counter: this.state.counter + 1
             });
 
-        } else if (this.state.tipoEducacion === 'maestria') {
+        } else if (this.state.tipoEducacion === 'master') {
             
             var maestriaArray = this.state.maestria;
 
-            var listMaestriaArray = this.state.maestriaArray;
+            var listMaestriaArray = this.state.listMaestria;
 
             maestriaArray.unshift(
                 <EducacionElement 
@@ -541,7 +542,12 @@ export default class Educacion extends Component {
             titulo: '',
             institucion: '',
             fechaInicio: '',
-            fechaFin: ''
+            fechaFin: '',
+            showLogro: '',
+            logro: '',
+            educacionLogros: '',
+            showLogro: '',
+            encurso: true
             
         })
         console.log('Resultado despues', this.state.gradoList);
@@ -635,16 +641,18 @@ export default class Educacion extends Component {
                          onChange={this.onChangeFechaFin}
                          value={this.state.fechaFin}
                          required={this.state.encurso}/>
-                        En curso <input type='checkbox' onChange={this.onChangeEnCurso}/>
+                        En curso <input type='checkbox' onChange={this.onChangeEnCurso}
+                        checked={!this.state.encurso}/>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col">
                         <div>
-                            Logros en educación <input type="checkbox" onChange={this.onChangeShowLogro}/>    
+                            Logros en educación <input type="checkbox" onChange={this.onChangeShowLogro} 
+                            checked={this.state.showLogro}/>    
                         </div>
                         <div onChange={this.onChangeLogro}>
-                            <textarea disabled={!this.state.showLogro}></textarea>
+                            <textarea disabled={!this.state.showLogro} value={this.state.educacionLogros}></textarea>
                         </div>
                     </div>
                 </div>

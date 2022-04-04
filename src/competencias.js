@@ -3,7 +3,7 @@ import languages from './languages';
 import ReactStars from 'react-rating-stars-component';
 import IdiomasComponent from './idioma-component';
 import ReferenciaComponent from './referencia-component';
-import ProyectoComponent from './proyecto-component';
+// import ProyectoComponent from './proyecto-component';
 import { Link } from 'react-router-dom';
 import Competencia from './agrega-competencia';
 
@@ -140,17 +140,15 @@ export default class Competencias extends Component {
         var competenciaArray = this.state.competenciaList;
 
         var listCompetenciaArray = this.state.listCompetencia;
-       
-        // console.log(this.props.location.state.passDatos);
 
         competenciaArray.unshift(
             this.state.competencia
         );
 
-        listCompetenciaArray.unshift(this.state.competencia);
+        // listCompetenciaArray.unshift(this.state.competencia);
 
         this.setState({
-            competenciaList: competenciaArray,
+            // competenciaList: competenciaArray,
             listCompetencia: competenciaArray,
             counter: this.state.counter + 1
         });
@@ -187,15 +185,15 @@ export default class Competencias extends Component {
 
         var listProyectosArray = this.state.listProyectos;
 
-        proyectoArray.unshift(
-            <ProyectoComponent 
-            key={'l' + this.state.counter + 1}
-            nombreProyecto={this.state.nombreProyecto}
-            descripcionProyecto={this.state.descripcionProyecto}
-            fechaInicioProyecto={this.state.inicioProyecto}
-            fechaFinProyecto={this.state.finProyecto}
-            />
-        );
+        // proyectoArray.unshift(
+        //     <ProyectoComponent 
+        //     key={'l' + this.state.counter + 1}
+        //     nombreProyecto={this.state.nombreProyecto}
+        //     descripcionProyecto={this.state.descripcionProyecto}
+        //     fechaInicioProyecto={this.state.inicioProyecto}
+        //     fechaFinProyecto={this.state.finProyecto}
+        //     />
+        // );
 
         listProyectosArray.unshift({
             listNombreProyecto: this.state.nombreProyecto,
@@ -275,19 +273,12 @@ export default class Competencias extends Component {
             counter: this.state.counter + 1
         });
         }
-
-        console.log(this.state.referenciaList || this.state.referenciaPersonalList);
         
     }
 
     render() {
         return(
             <div>
-                {/* <Competencia idiomas={this.state.idiomas} 
-                idiomaLev={this.state.idiomaLevel} 
-                competenciasList={this.state.competenciaList}
-                counter={this.state.counter}/> */}
-
                 <div>
                     <div>
                       <h1>Competencias</h1>  
@@ -325,16 +316,16 @@ export default class Competencias extends Component {
                     <div className="col d-flex align-items-center">
                         <button className="ml-5 btn btn-info btn-sm" onClick={this.addIdioma}>Agregar idioma</button>
                     </div>
-                {this.state.competencia}
+                {/* {this.state.competencia} */}
 
 
-                <div className="row">
+                {/* <div className="row">
                     <div className="col">
                         <ul>
                             {this.state.competenciaList.map( e => <li key={e}>{e}</li>)}
                         </ul>
                     </div>
-                </div>
+                </div> */}
                 <div className="row">
                     
                 </div>
@@ -383,7 +374,7 @@ export default class Competencias extends Component {
                 </div>
                 <div className="row">
                     <div className="col">
-                        {this.state.proyectosList}
+                        {this.state.listProyectos}
                     </div>
                 </div>
                 <div className="row  mb-2">

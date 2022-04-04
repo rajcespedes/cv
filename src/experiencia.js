@@ -112,9 +112,9 @@ export default class Experiencia extends Component {
         // var regEx = /\w+/g;
         var regEx = /.+/g;
 
-        if(!e.target.value) {
+        // if(!e.target.value) {
             
-        } 
+        // } 
         
         this.setState({
             funciones: e.target.value.match(regEx),
