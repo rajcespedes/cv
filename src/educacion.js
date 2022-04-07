@@ -429,6 +429,9 @@ export default class Educacion extends Component {
                 counter: this.state.counter + 1
             });
 
+            console.log(this.state.tipoEducacion);
+            console.log(this.state.listBachiller > 0);
+
         } else if (this.state.tipoEducacion === 'diplomado') {
 
             var diplomadoArray = this.state.diplomado;
@@ -761,20 +764,13 @@ export default class Educacion extends Component {
                         {this.state.curso}
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col">
-                        {this.state.curso}
-                    </div>
-                </div>
                 <div className='row'>
                     <div className="col d-flex justify-content-end">
-                        { this.state.curso.length > 0 
-                        || this.state.diplomado.length > 0  
-                        || 
+                        { this.state.curso.length > 0 || this.state.diplomado.length > 0  || 
                         this.state.listDoctorado.length > 0 || this.state.listEspecialidad.length > 0  ||
                         this.state.listGrado.length > 0  || this.state.listMaestria.length > 0  || 
                         this.state.listTaller.length > 0 || this.state.listTecnico.length > 0  ||
-                        this.state.listCertificacion.length > 0 
+                        this.state.listCertificacion.length > 0 || this.state.listBachiller.length > 0
                         ? 
                         <Link 
                         className="btn btn-info"

@@ -124,7 +124,8 @@ export default class Competencias extends Component {
     onChangeCompetencia(e){
         this.setState({
             competencia: e.target.value
-        })
+        });
+
     }
 
     onChangeTipoReferencia(e){
@@ -150,7 +151,8 @@ export default class Competencias extends Component {
         this.setState({
             // competenciaList: competenciaArray,
             listCompetencia: competenciaArray,
-            counter: this.state.counter + 1
+            counter: this.state.counter + 1,
+            competencia: ''
         });
 
     }
@@ -282,8 +284,9 @@ export default class Competencias extends Component {
                 <div>
                     <div>
                       <h1>Competencias</h1>  
-                      <input placeholder='Competencia' type="text" onChange={this.onChangeCompetencia} /> 
-                      <button className="ml-5 btn btn-info btn-sm" onClick={this.addCompetencia}>Agregar habilidad</button>
+                      <input placeholder='Competencia' value={this.state.competencia} type="text" onChange={this.onChangeCompetencia} /> 
+                      <button className="ml-5 btn btn-info btn-sm" onClick={this.addCompetencia}
+                      value={this.state.competencia}>Agregar habilidad</button>
                     </div>
                 </div>
                 <div className="row">
