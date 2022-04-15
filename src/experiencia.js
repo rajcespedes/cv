@@ -107,6 +107,10 @@ export default class Experiencia extends Component {
 
     }
 
+    
+    
+    
+    
     onChangeFunciones(e){
 
         // var regEx = /\w+/g;

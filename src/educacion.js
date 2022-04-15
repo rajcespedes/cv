@@ -429,8 +429,8 @@ export default class Educacion extends Component {
                 counter: this.state.counter + 1
             });
 
-            console.log(this.state.tipoEducacion);
-            console.log(this.state.listBachiller > 0);
+            // console.log(this.state.tipoEducacion);
+            // console.log(this.state.listBachiller > 0);
 
         } else if (this.state.tipoEducacion === 'diplomado') {
 
@@ -553,7 +553,7 @@ export default class Educacion extends Component {
             encurso: true
             
         })
-        console.log('Resultado despues', this.state.gradoList);
+        // console.log('Resultado despues', this.state.gradoList);
        
     }  
     

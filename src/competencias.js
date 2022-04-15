@@ -6,6 +6,7 @@ import ReferenciaComponent from './referencia-component';
 // import ProyectoComponent from './proyecto-component';
 import { Link } from 'react-router-dom';
 import Competencia from './agrega-competencia';
+import { CropLandscapeOutlined } from '@material-ui/icons';
 
 export default class Competencias extends Component {
 
@@ -278,6 +279,10 @@ export default class Competencias extends Component {
         
     }
 
+    clickCompetencia(e){
+        console.log(e);
+    }
+
     render() {
         return(
             <div>
@@ -296,10 +301,16 @@ export default class Competencias extends Component {
                         </ul>
                     </div>
                 </div>
+                <div className='row'>
+                    <div className='col'>
+                        <h1>Idiomas</h1>
+                    </div>
+                </div>
+                <div className='row'>
                 <div className="col">
-                    <h3>Idiomas</h3>
-                        <select>
-                            <option>Seleccione</option>
+                    <h3>Idioma</h3>
+                        <select onChange={this.onChangeIdioma}>
+                            <option selected>Seleccione</option>
                             {this.state.idiomas.map( e => <option value={e}>{e}</option>)}
                         </select>
                     </div>
@@ -316,8 +327,10 @@ export default class Competencias extends Component {
                         this.state.idiomaLevel == 2 ? <label>Medio</label> : 
                         this.state.idiomaLevel == 3 ? <label>Alto</label> : '' }
                     </div>
+                    
                     <div className="col d-flex align-items-center">
                         <button className="ml-5 btn btn-info btn-sm" onClick={this.addIdioma}>Agregar idioma</button>
+                    </div>
                     </div>
                 {/* {this.state.competencia} */}
 
