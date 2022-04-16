@@ -3,10 +3,14 @@ import languages from './languages';
 import ReactStars from 'react-rating-stars-component';
 import IdiomasComponent from './idioma-component';
 import ReferenciaComponent from './referencia-component';
+// import { toHaveDescription } from '@testing-library/jest-dom/dist/matchers';
+import Rating from 'react-rating';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { star } from '@fortawesome/fontawesome-svg-core';
 // import ProyectoComponent from './proyecto-component';
-import { Link } from 'react-router-dom';
-import Competencia from './agrega-competencia';
-import { CropLandscapeOutlined } from '@material-ui/icons';
+// import { Link } from 'react-router-dom';
+// import Competencia from './agrega-competencia';
+// import { CropLandscapeOutlined } from '@material-ui/icons';
 
 export default class Competencias extends Component {
 
@@ -100,8 +104,16 @@ export default class Competencias extends Component {
         this.setState({
             idiomasList: idiomasArray,
             listIdioma: listIdiomasArray,
-            counter: this.state.counter + 1
+            counter: this.state.counter + 1,
+            idiomaSeleccionado: 'selected',
+            idiomaLevel: '0'
         });
+       
+        alert(this.state.idiomaLevel);
+
+
+        
+
     }
 
     onChangeNombre(e){
@@ -154,7 +166,7 @@ export default class Competencias extends Component {
             listCompetencia: competenciaArray,
             counter: this.state.counter + 1,
             competencia: ''
-        });
+        });        
 
     }
     
@@ -276,7 +288,7 @@ export default class Competencias extends Component {
             counter: this.state.counter + 1
         });
         }
-        
+      
     }
 
     clickCompetencia(e){
@@ -310,7 +322,7 @@ export default class Competencias extends Component {
                 <div className="col">
                     <h3>Idioma</h3>
                         <select onChange={this.onChangeIdioma}>
-                            <option selected>Seleccione</option>
+                            <option selected={ this.state.idiomaSeleccionado === 'selected' ? 'selected' : ''}>Seleccione</option>
                             {this.state.idiomas.map( e => <option value={e}>{e}</option>)}
                         </select>
                     </div>
@@ -319,8 +331,17 @@ export default class Competencias extends Component {
                         <ReactStars 
                         count={3}
                         size={40}
+                        value={this.state.idiomaLevel}
                         onChange={this.ratingChanged}
                         />
+
+                        {/* <Rating */}
+                        {/* // stop={3}  */}
+                        {/* // emptySymbol='fa-solid fa-star' */}
+                        {/* // /> */}
+
+                        {/* <FontAwesomeIcon icon="fa-solid fa-star" /> */}
+
                     </div>
                     <div className="col d-flex align-items-end">
                         {this.state.idiomaLevel == 1 ? <label>Bajo</label> : 
