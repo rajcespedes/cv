@@ -40,7 +40,7 @@ export default class Competencias extends Component {
             competencia: '',
             counter: 0,
             idiomas: languages,
-            idiomaLevel: 0,
+            idiomaLevel: [],
             idiomasList: [],
             idiomaSeleccionado: '',
             referencia: ['Laboral','Personal'],
@@ -59,7 +59,8 @@ export default class Competencias extends Component {
             listCompetencia: [],
             listProyectos: [],
             listReferenciaLaboral: [],
-            listReferenciaPersonal: []
+            listReferenciaPersonal: [],
+            languageSelect: ['Bajo','Medio','Alto']
         }
 
     }
@@ -71,7 +72,7 @@ export default class Competencias extends Component {
 
     ratingChanged(e){
         this.setState({
-            idiomaLevel: e
+            idiomaLevel: e.target.value
         });
         
     }
@@ -83,6 +84,8 @@ export default class Competencias extends Component {
     }
 
     addIdioma(e){
+
+        if (this.state.idiomaSeleccionado != 'Selected') {
 
         var idiomasArray = this.state.idiomasList;
 
@@ -106,13 +109,14 @@ export default class Competencias extends Component {
             listIdioma: listIdiomasArray,
             counter: this.state.counter + 1,
             idiomaSeleccionado: 'selected',
-            idiomaLevel: '0'
+            idiomaLevel: 'selected'
         });
        
-        alert(this.state.idiomaLevel);
+        }
 
-
-        
+        else {
+            alert('Idioma no puede estar en blanco');
+        }
 
     }
 
@@ -151,6 +155,8 @@ export default class Competencias extends Component {
 
         e.preventDefault();
 
+        if ( e.target.value != '') { 
+
         var competenciaArray = this.state.competenciaList;
 
         var listCompetenciaArray = this.state.listCompetencia;
@@ -166,7 +172,10 @@ export default class Competencias extends Component {
             listCompetencia: competenciaArray,
             counter: this.state.counter + 1,
             competencia: ''
-        });        
+        });   
+    } else {
+        alert('No puede agregar competencia en blanco');
+    }     
 
     }
     
@@ -199,16 +208,6 @@ export default class Competencias extends Component {
         var proyectoArray = this.state.proyectosList;
 
         var listProyectosArray = this.state.listProyectos;
-
-        // proyectoArray.unshift(
-        //     <ProyectoComponent 
-        //     key={'l' + this.state.counter + 1}
-        //     nombreProyecto={this.state.nombreProyecto}
-        //     descripcionProyecto={this.state.descripcionProyecto}
-        //     fechaInicioProyecto={this.state.inicioProyecto}
-        //     fechaFinProyecto={this.state.finProyecto}
-        //     />
-        // );
 
         listProyectosArray.unshift({
             listNombreProyecto: this.state.nombreProyecto,
@@ -328,49 +327,24 @@ export default class Competencias extends Component {
                     </div>
                     <div className="col">
                         <h3>Nivel</h3>
-                        <ReactStars 
-                        count={3}
-                        size={40}
-                        value={this.state.idiomaLevel}
-                        onChange={this.ratingChanged}
-                        />
 
-                        {/* <Rating */}
-                        {/* // stop={3}  */}
-                        {/* // emptySymbol='fa-solid fa-star' */}
-                        {/* // /> */}
+                        <select onChange={this.ratingChanged}>
+                            <option value="Seleccione" 
+                            selected={this.state.idiomaLevel == 'selected' ? 'selected' : ''} >Seleccione</option>
+                            {this.state.languageSelect.map( e => <option key={e} value={e}> {e}</option>)}
+                        </select>
 
-                        {/* <FontAwesomeIcon icon="fa-solid fa-star" /> */}
-
-                    </div>
-                    <div className="col d-flex align-items-end">
-                        {this.state.idiomaLevel == 1 ? <label>Bajo</label> : 
-                        this.state.idiomaLevel == 2 ? <label>Medio</label> : 
-                        this.state.idiomaLevel == 3 ? <label>Alto</label> : '' }
                     </div>
                     
                     <div className="col d-flex align-items-center">
                         <button className="ml-5 btn btn-info btn-sm" onClick={this.addIdioma}>Agregar idioma</button>
                     </div>
                     </div>
-                {/* {this.state.competencia} */}
-
-
-                {/* <div className="row">
-                    <div className="col">
-                        <ul>
-                            {this.state.competenciaList.map( e => <li key={e}>{e}</li>)}
-                        </ul>
-                    </div>
-                </div> */}
-                <div className="row">
-                    
-                </div>
                 <div className="row mt-5">
                     <div className="col">
                         <label className="font-weight-bold">{ this.state.idiomasList.length > 0 ? 'Idioma' : ''}</label>
                     </div>
-                    <div className="col">
+                    <div className="col">   
                         <label className="font-weight-bold">{ this.state.idiomasList.length > 0 ? 'Nivel' : ''}</label>
                     </div>
                 </div>

@@ -16,9 +16,12 @@ export default class IdiomaComponent extends Component {
                         <label>{this.props.idioma}</label>
                     </div>
                     <div className="col">
-                        <label>{this.props.idiomaLevel == 1 ? 'Bajo' :
-                        this.props.idiomaLevel == 2 ? 'Medio' :
-                        this.props.idiomaLevel == 3 ? 'Alto' : ''}</label>
+                        <label>{
+                        this.props.idiomaLevel
+                        // this.props.idiomaLevel == 1 ? 'Bajo' :
+                        // this.props.idiomaLevel == 2 ? 'Medio' :
+                        // this.props.idiomaLevel == 3 ? 'Alto' : ''
+                        }</label>
                     </div>
                 </div>
             </div>
