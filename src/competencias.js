@@ -203,7 +203,7 @@ export default class Competencias extends Component {
         });
     }
 
-    addProyecto(e){
+    addProyecto(){
         
         var proyectoArray = this.state.proyectosList;
 
@@ -221,6 +221,8 @@ export default class Competencias extends Component {
             listProyectos: listProyectosArray,
             counter: this.state.counter + 1
         });
+
+        console.log(this.state.listProyectos[0].listDescripcionProyecto);
 
     }
 
@@ -360,22 +362,30 @@ export default class Competencias extends Component {
                 </div>
                 <div className="row mb-2">
                     <div className="col">
-                        <input type="text" placeholder='Nombre del proyecto' onChange={this.onChangeNombreProyecto}/>
+                        <input type="text" placeholder='Nombre del proyecto' 
+                        // value={this.state.nombreProyecto}
+                        onChange={this.onChangeNombreProyecto}/>
                     </div>
                 </div>
                 <div className="row  mb-1">
                     <div className="col-2">
-                        <textarea placeholder="Descripcion/Impacto" onChange={this.onChangeDescripcionProyecto}></textarea> 
+                        <textarea placeholder="Descripcion/Impacto" 
+                        // value={this.state.descripcionProyecto}
+                        onChange={this.onChangeDescripcionProyecto}></textarea> 
                     </div>
                 </div>
                 <div className="row  mb-2">
                     <div className="col-2">
-                        <input type="date" onChange={this.onChangeInicioProyecto} />
+                        <input type="date" 
+                        // value={this.state.inicioProyecto}
+                        onChange={this.onChangeInicioProyecto} />
                     </div>
                 </div>
                 <div className="row  mb-2">
                     <div className="col-2">
-                        <input type="date"  onChange={this.onChangeFinProyecto}/>
+                        <input type="date" 
+                        // value={this.state.finProyecto}
+                        onChange={this.onChangeFinProyecto}/>
                     </div>
                 </div>
                 <div className="row">
@@ -385,7 +395,7 @@ export default class Competencias extends Component {
                 </div>
                 <div className="row">
                     <div className="col">
-                        {this.state.listProyectos}
+                        {this.state.listProyectos.length > 0 ? this.state.listProyectos[0].listDescripcionProyecto : ''}
                     </div>
                 </div>
                 <div className="row  mb-2">
