@@ -45,7 +45,7 @@ export default class Resumen extends Component {
                         <label>{this.props.location.state.passDatos.licencia == 1 ? "Motores (Cat 1)" :
                         this.props.location.state.passDatos.licencia == 2 ? "Vehículos livianos (Cat 2)" :
                         this.props.location.state.passDatos.licencia == 3 ? "Vehículos pesados: menos de 2 ejes (Cat 3)" :
-                        this.props.location.state.passDatos.licencia == 4 ? "Autobuses y camiones de m[as de 2 (Cat 4)" :
+                        this.props.location.state.passDatos.licencia == 4 ? "Autobuses y camiones de más de 2 (Cat 4)" :
                         this.props.location.state.passDatos.licencia == 5 ? "Operador de equipos especiales: motoniveladora, retroexcavadora, etc. (Cat 5)" : "No tengo"}</label>
                     </div>
                 </div>
@@ -355,7 +355,7 @@ export default class Resumen extends Component {
                     <h3>Referencias</h3>
                  : ""}
 
-                {this.props.location.state.passDatos.listReferenciaLaboral ? 
+                {this.props.location.state.passDatos.listReferenciaLaboral.length > 0 ? 
                     <div className="row">
                         <div className="col">
                             <label className="font-weight-bold">Laboral</label>
@@ -373,7 +373,7 @@ export default class Resumen extends Component {
                     </div>
                 : ""}
 
-                {this.props.location.state.passDatos.listReferenciaPersonal ? 
+                {this.props.location.state.passDatos.listReferenciaPersonal.length > 0 ? 
                     <div className="row">
                         <div className="col">
                             <label className="font-weight-bold">Personal</label>

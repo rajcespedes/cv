@@ -77,36 +77,6 @@ export default class Educacion extends Component {
             selectValue: e.target.value
         })
         
-        
-        // if(e.target.value === 'Formal'){
-        //     this.setState({
-        //         tipo: 
-        //             <div>
-        //                 <input type="radio" name="tipoEducacion" 
-        //                 value="bachiller" required
-        //                 checked={this.state.tipoEducacion === 'bachiller'}/> Bachiller
-        //                 <input type="radio" name="tipoEducacion" value="tecnico"
-        //                 checked={this.state.tipoEducacion === 'tecnico'} 
-        //                 required/> Técnico
-        //                 <input type="radio" name="tipoEducacion" value="certificacion" required/> Certificación
-        //                 <input type="radio" name="tipoEducacion" value="grado" required/> Grado
-        //                 <input type="radio" name="tipoEducacion" value="especialidad" required/> Especialidad
-        //                 <input type="radio" name="tipoEducacion" value="master" required/> Máster
-        //                 <input type="radio" name="tipoEducacion" value="doctorado" required/> Doctorado
-        //             </div>
-        //     });
-        // } 
-        // else if (e.target.value === 'Continuada') {
-        //     this.setState({
-        //         tipo:                 
-        //             <div>
-        //                 <input type="radio" name="tipoEducacion" value="curso" required/> Curso
-        //                 <input type="radio" name="tipoEducacion" value="taller" required/> Taller
-        //                 <input type="radio" name="tipoEducacion" value="diplomado" required/> Diplomado
-        //             </div>
-        //     });
-        // }
-
     }
 
     onChangeShowLogro(e){
@@ -154,16 +124,16 @@ export default class Educacion extends Component {
 
     onChangeFechaFin(e){
 
-        if(this.state.fechaInicio > e.target.value){
-            alert('Fecha de salida debe ser igual o mayor a fecha de ingreso');
-            this.setState({
-                fechaFin: ''
-            });             
-        } else {
+        // if(this.state.fechaInicio > e.target.value){
+            // alert('Fecha de salida debe ser igual o mayor a fecha de ingreso');
+            // this.setState({
+            //     fechaFin: ''
+            // });             
+        // } else {
             this.setState({
                 fechaFin: e.target.value
             });
-        }
+        // }
 
     }
 
@@ -182,6 +152,13 @@ export default class Educacion extends Component {
     addEducacion(e){
 
         e.preventDefault();
+
+          if(this.state.fechaInicio > this.state.fechaFin){
+            alert('Fecha de salida debe ser igual o mayor a fecha de ingreso');
+            this.setState({
+                fechaFin: ''
+            });             
+        } else {
 
         if(this.state.tipoEducacion === 'grado') {
 
@@ -554,6 +531,7 @@ export default class Educacion extends Component {
             
         })
         // console.log('Resultado despues', this.state.gradoList);
+    }
        
     }  
     

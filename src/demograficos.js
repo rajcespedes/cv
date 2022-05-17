@@ -216,7 +216,7 @@ export default class Demograficos extends Component  {
                         <option value="1">Motores (Cat 1)</option>
                         <option value="2">Vehículos livianos (Cat 2)</option>
                         <option value="3">Vehículos pesados: menos de 2 ejes (Cat 3)</option>
-                        <option value="4">Autobuses y camiones de m[as de 2 (Cat 4)</option>
+                        <option value="4">Autobuses y camiones de más de 2 ejes (Cat 4)</option>
                         <option value="5">Operador de equipos especiales: motoniveladora, retroexcavadora, etc. (Cat 5)</option>
                     </select>   
                 </div>

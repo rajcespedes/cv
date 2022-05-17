@@ -77,16 +77,16 @@ export default class Experiencia extends Component {
 
     onChangeFechaSalida(e){
 
-        if (this.state.fechaIngreso > e.target.value) {
-            alert('Fecha de salida debe ser mayor o igual a fecha de ingreso');
-            this.setState({
-                fechaSalida: ''
-            });
-        } else {
+        // if (this.state.fechaIngreso > e.target.value) {
+            // alert('Fecha de salida debe ser mayor o igual a fecha de ingreso');
+            // this.setState({
+                // fechaSalida: ''
+            // });
+        // } else {
             this.setState({
                 fechaSalida: e.target.value
             });
-        }
+        // }
 
 
         
@@ -156,6 +156,13 @@ export default class Experiencia extends Component {
     onSubmit(e){
         
         e.preventDefault();
+
+             if (this.state.fechaIngreso >this.state.fechaSalida) {
+            alert('Fecha de salida debe ser mayor o igual a fecha de ingreso');
+            this.setState({
+                fechaSalida: ''
+            });
+        } else {
 
         if(this.state.tipo === 'laboral'){
 
@@ -288,6 +295,7 @@ export default class Experiencia extends Component {
 
         // notes.value = '';
     }
+    }
 
     
 
@@ -385,6 +393,7 @@ export default class Experiencia extends Component {
                         </div>
                     </div>
                 </form>
+                
                 <div className="row">
                     <div className="col">
                     { this.state.list.length > 0

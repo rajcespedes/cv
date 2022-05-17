@@ -8,7 +8,7 @@ import Rating from 'react-rating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { star } from '@fortawesome/fontawesome-svg-core';
 // import ProyectoComponent from './proyecto-component';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import Competencia from './agrega-competencia';
 // import { CropLandscapeOutlined } from '@material-ui/icons';
 
@@ -222,7 +222,12 @@ export default class Competencias extends Component {
             counter: this.state.counter + 1
         });
 
-        console.log(this.state.listProyectos[0].listDescripcionProyecto);
+        console.log(this.state.listProyectos.map(e => e.listDescripcionProyecto));
+
+        this.setState({
+            nombreProyecto: '',
+
+        });
 
     }
 
@@ -289,6 +294,14 @@ export default class Competencias extends Component {
             counter: this.state.counter + 1
         });
         }
+
+        this.setState({
+            nombre:'',
+            puesto:'',
+            numero:'',
+            finProyecto: '',
+            inicioProyecto: ''
+        });
       
     }
 
@@ -335,9 +348,7 @@ export default class Competencias extends Component {
                             selected={this.state.idiomaLevel == 'selected' ? 'selected' : ''} >Seleccione</option>
                             {this.state.languageSelect.map( e => <option key={e} value={e}> {e}</option>)}
                         </select>
-
                     </div>
-                    
                     <div className="col d-flex align-items-center">
                         <button className="ml-5 btn btn-info btn-sm" onClick={this.addIdioma}>Agregar idioma</button>
                     </div>
@@ -363,7 +374,7 @@ export default class Competencias extends Component {
                 <div className="row mb-2">
                     <div className="col">
                         <input type="text" placeholder='Nombre del proyecto' 
-                        // value={this.state.nombreProyecto}
+                        value={this.state.nombreProyecto}
                         onChange={this.onChangeNombreProyecto}/>
                     </div>
                 </div>
@@ -395,7 +406,16 @@ export default class Competencias extends Component {
                 </div>
                 <div className="row">
                     <div className="col">
-                        {this.state.listProyectos.length > 0 ? this.state.listProyectos[0].listDescripcionProyecto : ''}
+                        {/* {this.state.listProyectos.length > 0 ? this.state.listProyectos.map(e => 
+                             <li>{e.listDescripcionProyecto}<li/> ): ''} */}
+                             {this.state.listProyectos.map( e => 
+                             <div>
+                                 <h3>{e.listNombreProyecto}</h3>
+                                 <p>{e.listDescripcionProyecto}</p>
+                                 <p> <strong>Fecha inicio:</strong> {e.listFechaInicioProyecto}</p>
+                                 <p><strong>Fecha fin:</strong> {e.listFechaFinProyecto}</p>
+                             </div>
+                             )}
                     </div>
                 </div>
                 <div className="row  mb-2">
@@ -414,17 +434,21 @@ export default class Competencias extends Component {
                 </div>
                 <div className="row  mb-2">
                     <div className="col-2">
-                        <input type="text" placeholder='Nombre' onChange={this.onChangeNombre}/>
+                        <input type="text" placeholder='Nombre' 
+                        value={this.state.nombre} onChange={this.onChangeNombre}/>
                     </div>
                 </div>
                 <div className="row mb-2">
                     <div className="col-2">
-                        <input type="text" placeholder='Número' onChange={this.onChangeNumero}/>
+                        <input type="text" placeholder='Número' 
+                        value={this.state.numero} onChange={this.onChangeNumero}/>
                     </div>
                 </div>
                 <div className="row  mb-2">
                     <div className="col-2">
-                        <input placeholder='Puesto o Relación' type="text" onChange={this.onChangePuesto}/>
+                        <input placeholder='Puesto o Relación' type="text" 
+                        value={this.state.puesto}
+                        onChange={this.onChangePuesto}/>
                     </div>
                 </div>              
                 <div className="row">
@@ -465,7 +489,7 @@ export default class Competencias extends Component {
                     </div>
                 </div>
                 <div>
-                    {/* <Link 
+                     <Link 
                     className="btn btn-success"
                     to={
                         {
@@ -510,7 +534,7 @@ export default class Competencias extends Component {
                     }
                     >
                         Finalizar
-                    </Link> */}
+                    </Link> 
                 </div>
             </div>
         );
