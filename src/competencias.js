@@ -226,7 +226,9 @@ export default class Competencias extends Component {
 
         this.setState({
             nombreProyecto: '',
-
+            descripcionProyecto: '',
+            inicioProyecto: '',
+            finProyecto:''
         });
 
     }
@@ -381,21 +383,21 @@ export default class Competencias extends Component {
                 <div className="row  mb-1">
                     <div className="col-2">
                         <textarea placeholder="Descripcion/Impacto" 
-                        // value={this.state.descripcionProyecto}
+                        value={this.state.descripcionProyecto}
                         onChange={this.onChangeDescripcionProyecto}></textarea> 
                     </div>
                 </div>
                 <div className="row  mb-2">
                     <div className="col-2">
                         <input type="date" 
-                        // value={this.state.inicioProyecto}
+                        value={this.state.inicioProyecto}
                         onChange={this.onChangeInicioProyecto} />
                     </div>
                 </div>
                 <div className="row  mb-2">
                     <div className="col-2">
                         <input type="date" 
-                        // value={this.state.finProyecto}
+                        value={this.state.finProyecto}
                         onChange={this.onChangeFinProyecto}/>
                     </div>
                 </div>
@@ -460,7 +462,7 @@ export default class Competencias extends Component {
                 </div>
                 <div className="row">
                     <div className="col">
-                    {this.state.referenciaList.length > 0 || this.state.referenciaPersonalList.length > 0? 
+                    {this.state.referenciaList.length > 0 || this.state.referenciaPersonalList.length > 0 ? 
                     <div className="row">
                         <div className="col">
                             <label className="font-weight-bold">Tipo referencia</label>
@@ -489,6 +491,12 @@ export default class Competencias extends Component {
                     </div>
                 </div>
                 <div>
+                    { 
+                    this.state.listProyectos.length > 0 
+                    || this.state.idiomasList.length > 0 
+                    || this.state.listReferenciaPersonal.length > 0 
+                    || this.state.listReferenciaLaboral.length > 0
+                    ?
                      <Link 
                     className="btn btn-success"
                     to={
@@ -535,6 +543,7 @@ export default class Competencias extends Component {
                     >
                         Finalizar
                     </Link> 
+                   : '' }
                 </div>
             </div>
         );
