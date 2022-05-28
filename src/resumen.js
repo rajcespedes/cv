@@ -1,19 +1,32 @@
+import jsPDF from 'jspdf';
 import { React, Component } from 'react';
+
 
 
 export default class Resumen extends Component {
 
     constructor(props){
         super(props);
+
     }
 
     componentDidMount(){
         console.log(this.props.location.state.passDatos);
+
     }
 
+    generatePdf() {
+        const report = new jsPDF('portrait','pt','A4');
+        // report.html(document.querySelector('#toTry').then(() => { report.save('export.pdf') });
+        report.html(document.querySelector('#toTry')).then( () => {report.save('export.pdf')});
+    }
+  
+
     render(){
+        
         return(
-            <div>
+        
+            <div id='toTry'>
                 <div className="row">
                     <div className="col">
                         <label>{this.props.location.state.passDatos.nombres}</label>
@@ -390,9 +403,11 @@ export default class Resumen extends Component {
                         </div>
                     </div>
                 : ""}
-
+                <button onClick={this.generatePdf} >Print</button>
             </div>
+
         );
+        
     }
 
 }  

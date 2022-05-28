@@ -612,13 +612,13 @@ export default class Educacion extends Component {
                 <div className="row">
                     <div className="col">
                         <label>Fecha Inicio</label>
-                        <input type="date" name='fechaInicio' 
+                        <input type="month" name='fechaInicio' 
                         value={this.state.fechaInicio}
                         onChange={this.onChangeFechaInicio} required/>
                     </div>
                     <div className="col">
                         <label>Fecha Fin</label>
-                        <input type="date" name='fechaFin' disabled={!this.state.encurso}
+                        <input type="month" name='fechaFin' disabled={!this.state.encurso}
                          onChange={this.onChangeFechaFin}
                          value={this.state.fechaFin}
                          required={this.state.encurso}/>

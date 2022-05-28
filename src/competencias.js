@@ -492,7 +492,8 @@ export default class Competencias extends Component {
                 </div>
                 <div>
                     { 
-                    this.state.listProyectos.length > 0 
+                    this.state.listCompetencia.length > 0 
+                    || this.state.listProyectos.length > 0 
                     || this.state.idiomasList.length > 0 
                     || this.state.listReferenciaPersonal.length > 0 
                     || this.state.listReferenciaLaboral.length > 0

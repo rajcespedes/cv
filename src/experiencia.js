@@ -106,11 +106,7 @@ export default class Experiencia extends Component {
         }
 
     }
-
-    
-    
-    
-    
+   
     onChangeFunciones(e){
 
         // var regEx = /\w+/g;
@@ -126,8 +122,6 @@ export default class Experiencia extends Component {
         });
 
     }
-
-    
 
     onChangeTipo(e){
 
@@ -307,6 +301,7 @@ export default class Experiencia extends Component {
                         <div className="col">
                             <h1>Experiencia</h1>
                         </div>
+                        
                     </div>
                     <div className="row">
                         <div className="col mb-2" onChange={this.onChangeTipo}>
@@ -369,14 +364,14 @@ export default class Experiencia extends Component {
                     <div className="row my-2" required>
                         <div className="col">
                             <label>Fecha Ingreso</label>
-                            <input className="ml-1" type="date" 
+                            <input className="ml-1" type="month"
                             onChange={this.onChangeFechaIngreso}
                             value={this.state.fechaIngreso}
                             required/>
                         </div>
                         <div className="col">
                             <label>Fecha Salida</label>
-                            <input className="mx-1" type="date"     
+                            <input className="mx-1" type="month"     
                             onChange={this.onChangeFechaSalida}  
                             value={this.state.fechaSalida}
                             disabled={!this.state.checked} 

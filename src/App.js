@@ -7,6 +7,8 @@ import Educacion from './educacion';
 import Competencias from './competencias';
 import Resumen from './resumen';
 import NewDemo from './newDemo';
+import ToCheck from './toCheck';
+
 
 
 var browserHistory = [];
