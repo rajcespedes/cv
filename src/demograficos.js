@@ -44,6 +44,11 @@ export default class Demograficos extends Component  {
         this.setState({
             nombres: e.target.value
         });
+        window.localStorage.setItem('nombre',this.state.nombres);
+        let newVariable = window.localStorage.getItem('nombre');
+        console.log(newVariable);
+        console.log(e.target.value);
+
     }
 
     onChangeApellidos(e){
@@ -131,8 +136,8 @@ export default class Demograficos extends Component  {
         
         console.log(demoForm);
 
-        axios.post('http://localhost:5000/',demoForm)
-        .then(res => console.log(res));
+        // axios.post('http://localhost:5000/',demoForm)
+        // .then(res => console.log(res));
         
 
         // window.location = '/experiencia';
@@ -146,7 +151,7 @@ export default class Demograficos extends Component  {
             }
         });
 
-
+        // console.log(window.localStorag``)
 
     
     }
@@ -194,11 +199,14 @@ export default class Demograficos extends Component  {
             <div className="row mb-3">
                 <div className="col d-flex justify-content-center">
                     <label>Celular</label>
-                    <input onChange={this.onChangeCelular} type="phone" name='celular'
+                    <input onChange={this.onChangeCelular} type="tel" name='celular'
+                    pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
                     required/>
 
                     <label>Teléfono</label>
-                    <input onChange={this.onChangeTelefono} type="phone" name="telefono"/>
+                    <input onChange={this.onChangeTelefono} type="tel" name="telefono"
+                    pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
+                    />
                 </div> 
             </div>
             <div className="row mb-3">

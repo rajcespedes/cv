@@ -1,6 +1,6 @@
-import jsPDF from 'jspdf';
+import axios from 'axios';
+import JsPDF from 'jspdf';
 import { React, Component } from 'react';
-
 
 
 export default class Resumen extends Component {
@@ -13,20 +13,25 @@ export default class Resumen extends Component {
     componentDidMount(){
         console.log(this.props.location.state.passDatos);
 
+        axios.post('http://localhost:5000/',this.props.location.state.passDatos)
+        .then(res => console.log(res));
+
     }
 
+
+
     generatePdf() {
-        const report = new jsPDF('portrait','pt','A4');
-        // report.html(document.querySelector('#toTry').then(() => { report.save('export.pdf') });
-        report.html(document.querySelector('#toTry')).then( () => {report.save('export.pdf')});
+        const report = new JsPDF('portrait','pt','A4');
+        
+        report.setFontSize(12).html(document.querySelector('#toTry')).then( () => { report.save('Export.pdf') });
     }
   
 
     render(){
         
         return(
-        
-            <div id='toTry'>
+        <div>
+            <div id='toTry' className='col-6'>
                 <div className="row">
                     <div className="col">
                         <label>{this.props.location.state.passDatos.nombres}</label>
@@ -403,6 +408,7 @@ export default class Resumen extends Component {
                         </div>
                     </div>
                 : ""}
+                </div>
                 <button onClick={this.generatePdf} >Print</button>
             </div>
 

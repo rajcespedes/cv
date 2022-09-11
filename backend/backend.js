@@ -15,13 +15,13 @@ app.use(express.urlencoded({extended: false}));
 
 // mongoose.connect('mongodb://localhost:27017/cv', {useNewUrlParser: true} );
 
-const connection = mongoose.connection;
+// const connection = mongoose.connection;
 
 app.use(cors());
 
 // connection.once('open', () => console.log('Connected to Database'));
 
-// app.get('/', (req,res) => res.send('backend page') );
+app.get('/', (req,res) => res.send('backend page') );
 
 // app.post('/', function(req,res) {
 
@@ -41,5 +41,6 @@ app.use(cors());
 
 // } );
 
+app.post('/')
 
  

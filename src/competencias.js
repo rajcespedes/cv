@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 // import Competencia from './agrega-competencia';
 // import { CropLandscapeOutlined } from '@material-ui/icons';
 
+
 export default class Competencias extends Component {
 
 
@@ -347,7 +348,7 @@ export default class Competencias extends Component {
 
                         <select onChange={this.ratingChanged}>
                             <option value="Seleccione" 
-                            selected={this.state.idiomaLevel == 'selected' ? 'selected' : ''} >Seleccione</option>
+                            selected={this.state.idiomaLevel === 'selected' ? 'selected' : ''} >Seleccione</option>
                             {this.state.languageSelect.map( e => <option key={e} value={e}> {e}</option>)}
                         </select>
                     </div>

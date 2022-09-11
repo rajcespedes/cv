@@ -1,22 +1,25 @@
-import React, {Component} from "react";
-// import Resumen from "./resumen";
-import Prueba from "./prueba";
-import { PDFViewer } from "@react-pdf/renderer";
+import { renderToString } from "react-dom/server";
+import jsPDF from "jspdf";
+import React from "react";
+import Resumen from "./resumen";
 
 
-
-function Pdf() {
-
+const onClick = ()=> {
+    const strings = renderToString(<Resumen />);
+    const printDoc = new jsPDF('p','mm','A4');
+    printDoc.fromHTML(strings);
+    printDoc.save('Export.pdf');
     
-            // <div>
-              
-            // </div>   
+}
+
+
+const Pdf = () => {
+   
 
     return(
-        // <Pdf/>
-        <PDFViewer>
-            <Prueba/>
-        </PDFViewer>
+        <div>
+            <button onClick={onClick}>Print</button>
+        </div>
     );
 }
 
