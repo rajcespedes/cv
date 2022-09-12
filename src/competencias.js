@@ -67,7 +67,7 @@ export default class Competencias extends Component {
     }
 
     componentDidMount(){
-        // console.log(this.props.location.state.passDatos);
+        console.log(this.props.location.state.passDatos);
         // console.log('validando ', this.props.location.state.passDatos.nombres);
     }
 

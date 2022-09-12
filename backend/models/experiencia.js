@@ -3,7 +3,9 @@ import { DataTypes } from "sequelize";
 import { Educacion } from "../models/educacion";
 
 
-export const Experiencia = new sequelize.define({
+export const Experiencia = new sequelize.define(
+    "experience",
+    {
     id: {
         type: DataTypes.INTEGER
     },
@@ -25,7 +27,11 @@ export const Experiencia = new sequelize.define({
     flagId: {
         type: DataTypes.INTEGER
     }
-});
+},
+    {
+        timestamps: true
+    }
+);
 
 
 Experiencia.hasMany(Educacion,
