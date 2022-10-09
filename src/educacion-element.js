@@ -30,13 +30,13 @@ export default class EducacionElement extends Component {
                         <label>{this.props.fechaInicio}</label>
                     </div>
                     <div className="col">
-                        {this.props.fechaFin != 'En curso' ? <label className="mr-1">Fin</label> : '' }
+                        {this.props.fechaFin !== 'En curso' ? <label className="mr-1">Fin</label> : '' }
                         <label>{this.props.fechaFin}</label>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-3">
-                        {this.props.logro != '' ? <label className="font-weight-bold">Logros</label> : ''}
+                        {this.props.logro !== '' ? <label className="font-weight-bold">Logros</label> : ''}
                         <ul className="list-group list-group-flush">
                             { this.props.logro ? this.props.logro.map( i => <li key={i} className='list-group-item'>{i}</li> ) : '' } 
                         </ul>

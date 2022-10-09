@@ -70,23 +70,33 @@ export default class Experiencia extends Component {
     }
 
     onChangeFechaIngreso(e){
-        this.setState({
-            fechaIngreso: e.target.value
-        });
+        console.log(new Date(e.target.value+ "  ").toLocaleDateString('en-US') > new Date().getMonth()+1 + "/" + new Date().getDay()  + "/" + new Date().getFullYear());
+        
+        if(new Date(e.target.value+ " ").toLocaleDateString('en-US') > new Date().getMonth()+1 + "/" + new Date().getDay()  + "/" + new Date().getFullYear()){
+            alert("Fecha de inicio no puede ser mayor al día de hoy.");
+            this.setState({
+                fechaIngreso: ''
+            });
+        } else {
+            this.setState({
+                fechaIngreso: e.target.value
+            }); 
+        }
+
     }
 
     onChangeFechaSalida(e){
 
-        // if (this.state.fechaIngreso > e.target.value) {
-            // alert('Fecha de salida debe ser mayor o igual a fecha de ingreso');
-            // this.setState({
-                // fechaSalida: ''
-            // });
-        // } else {
+        if (this.state.fechaIngreso > e.target.value) {
+            alert('Fecha de salida debe ser mayor o igual a fecha de ingreso');
+            this.setState({
+                fechaSalida: ''
+            });
+        } else {
             this.setState({
                 fechaSalida: e.target.value
             });
-        // }
+        }
 
 
         
@@ -151,12 +161,12 @@ export default class Experiencia extends Component {
         
         e.preventDefault();
 
-             if (this.state.fechaIngreso >this.state.fechaSalida) {
-            alert('Fecha de salida debe ser mayor o igual a fecha de ingreso');
-            this.setState({
-                fechaSalida: ''
-            });
-        } else {
+        //      if (this.state.fechaIngreso >this.state.fechaSalida) {
+        //     alert('Fecha de salida debe ser mayor o igual a fecha de ingreso');
+        //     this.setState({
+        //         fechaSalida: ''
+        //     });
+        // } else {
 
         if(this.state.tipo === 'laboral'){
 
@@ -288,7 +298,7 @@ export default class Experiencia extends Component {
         });
 
         // notes.value = '';
-    }
+    // }
     }
 
     

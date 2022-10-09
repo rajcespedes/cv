@@ -22,6 +22,7 @@ export default class Demograficos extends Component  {
         this.onChangeLicencia = this.onChangeLicencia.bind(this);
         this.onChangeVehiculo = this.onChangeVehiculo.bind(this);
         this.onChangeTraslado = this.onChangeTraslado.bind(this);
+        this.onClickButton = this.onClickButton(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -35,7 +36,8 @@ export default class Demograficos extends Component  {
             licencia: '',
             vehiculo: '',
             traslado: '',
-            completeFrom: ''
+            completeFrom: '',
+            count: 0
         }
 
     }
@@ -155,6 +157,11 @@ export default class Demograficos extends Component  {
 
     
     }
+
+    onClickButton() {
+        var counter = this.state.count + 1;
+        this.setState({ count: counter});
+    }
     
     render(){
     return( 
@@ -162,7 +169,8 @@ export default class Demograficos extends Component  {
             <form onSubmit={this.onSubmit}>
             <div className="row">
                 <div className="col d-flex justify-content-center">
-                    <h1>Datos demográficos</h1>                                         
+                    <h1>Datos demográficos</h1>     
+                    <button onClick={this.onClickButton} className='btn btn-info'>Agregar diálogo</button>                                    
                 </div>
             </div>
             <div className="row mb-3">

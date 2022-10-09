@@ -103,8 +103,8 @@ export default class Educacion extends Component {
         });
     }
 
-    onChangeEnCurso(e){
-        if(this.state.encurso == true) {
+    onChangeEnCurso(){
+        if(this.state.encurso === true) {
             this.setState({
                 encurso: false,
                 fechaFin: 'En curso'
@@ -117,9 +117,16 @@ export default class Educacion extends Component {
     }
 
     onChangeFechaInicio(e){
-        this.setState({
-            fechaInicio: e.target.value
-        });
+        if(new Date(e.target.value+ " ").toLocaleDateString('en-US') > new Date().getMonth()+1 + "/" + new Date().getDay()  + "/" + new Date().getFullYear()){
+            alert("Fecha de inicio no puede ser mayor al día de hoy.");
+            this.setState({
+                fechaInicio: ''
+            });
+        } else {
+            this.setState({
+                fechaInicio: e.target.value
+            }); 
+        }
     }
 
     onChangeFechaFin(e){
