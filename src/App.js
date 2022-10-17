@@ -17,8 +17,8 @@ var browserHistory = [];
 function App() {
   return (
     <Router history={browserHistory}>
-      <Route path='/' exact component={Demograficos} />
-      {/* <Route path='/' exact component={NewDemo} /> */}
+      {/* <Route path='/' exact component={Demograficos} /> */}
+      <Route path='/' exact component={NewDemo} />
       <Route path='/experiencia' component={Experiencia} />
       <Route path='/educacion' component={Educacion} />
       <Route path='/competencias' component={Competencias}/>
