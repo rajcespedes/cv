@@ -117,7 +117,8 @@ export default class Educacion extends Component {
     }
 
     onChangeFechaInicio(e){
-        if(new Date(e.target.value+ " ").toLocaleDateString('en-US') > new Date().getMonth()+1 + "/" + new Date().getDay()  + "/" + new Date().getFullYear()){
+        if( new Date(e.target.value+ " ").toLocaleDateString('en-US') > new Date().getMonth()+1 + "/" + 
+            new Date().getDay()  + "/" + new Date().getFullYear()){
             alert("Fecha de inicio no puede ser mayor al día de hoy.");
             this.setState({
                 fechaInicio: ''
