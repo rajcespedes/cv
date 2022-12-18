@@ -1,9 +1,5 @@
 import React, {useState} from "react";
 import { useHistory } from 'react-router-dom';
-// import FloatingLabel from "react-bootstrap-floating-label";
-
-
-
 
 
 const NewDemo = () => {
@@ -21,8 +17,6 @@ const NewDemo = () => {
         vehiculo: ''
     });
 
-    // const [ counter , setCounter ] = useState(0);
-
     const { push } = useHistory();
 
     const handleChange = (e) => {
@@ -34,7 +28,7 @@ const NewDemo = () => {
 
     const handleSubmit = (e)=> {
         e.preventDefault();
-        // fetchData();
+
         push({
             pathname: '/experiencia',
             state: {
@@ -52,20 +46,6 @@ const NewDemo = () => {
             }
         });
     }
-
-    // const onChangeNombre = (e) => {
-    //     setNombres({nombre: e.target.value});
-    // }
-
-    // const onChangeApellidos = (e) => {
-    //     set
-    // }
-
-    // var counter = 0;
-
-    // const onClickButton = () => {
-    //     setCounter( counter + 1 );
-    // }
 
     return(
     <div className="container">
@@ -121,7 +101,7 @@ const NewDemo = () => {
                         
                         <input onChange={handleChange} type="email"
                         name='email' value={allValues.email}
-                        placeholder="email"
+                        placeholder="eMail"
                         className="form-control mb-2"/>
 
                         <label>Licencia de conducir</label>

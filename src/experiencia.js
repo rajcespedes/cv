@@ -49,7 +49,6 @@ export default class Experiencia extends Component {
         console.log(this.props.location.state.passDatos);
     }
 
-
     onChangePuesto(e){
         this.setState({
             puesto: e.target.value
@@ -70,9 +69,11 @@ export default class Experiencia extends Component {
     }
 
     onChangeFechaIngreso(e){
-        console.log(new Date(e.target.value+ "  ").toLocaleDateString('en-US') > new Date().getMonth()+1 + "/" + new Date().getDay()  + "/" + new Date().getFullYear());
+        console.log(new Date(e.target.value+ "  ").toLocaleDateString('en-US') > 
+        new Date().getMonth()+1 + "/" + new Date().getDay()  + "/" + new Date().getFullYear());
         
-        if(new Date(e.target.value+ " ").toLocaleDateString('en-US') > new Date().getMonth()+1 + "/" + new Date().getDay()  + "/" + new Date().getFullYear()){
+        if(new Date(e.target.value+ " ").toLocaleDateString('en-US') > 
+            new Date().getMonth()+1 + "/" + new Date().getDay()  + "/" + new Date().getFullYear()){
             alert("Fecha de inicio no puede ser mayor al día de hoy.");
             this.setState({
                 fechaIngreso: ''
@@ -119,13 +120,8 @@ export default class Experiencia extends Component {
    
     onChangeFunciones(e){
 
-        // var regEx = /\w+/g;
         var regEx = /.+/g;
-
-        // if(!e.target.value) {
-            
-        // } 
-        
+       
         this.setState({
             funciones: e.target.value.match(regEx),
             algo: e.target.value
@@ -259,7 +255,6 @@ export default class Experiencia extends Component {
                 />
             );
 
-
             prePasantiaList.unshift(
                 {
                     pasantiaPuesto: this.state.puesto,
@@ -271,7 +266,6 @@ export default class Experiencia extends Component {
                 }
                 
             );
-
 
             this.setState({
                 pasantia: listPasantia,
@@ -305,96 +299,84 @@ export default class Experiencia extends Component {
 
     render() {
         return(
-            <div>
+            <div className='container '>
                 <form onSubmit={this.onSubmit}>
-                    <div className="row">
-                        <div className="col">
+                    <div className="row justify-content-center">
+                        <div className="col col-md-6 m-0">
                             <h1>Experiencia</h1>
-                        </div>
-                        
-                    </div>
-                    <div className="row">
-                        <div className="col mb-2" onChange={this.onChangeTipo}>
-
-                            <label className="font-weight-bold">Tipo de experiencia</label> <br/>
+                           
+                            <label className="font-weight-bold">Tipo de experiencia</label>
+                             <br/>
 
                             <input type="radio" name="tipoExperiencia" 
                             value='laboral'
-                            // onClick={ () => this.setState({checkLaboral: true })}
-                            checked={this.state.tipo === 'laboral'} 
+                            // checked={this.state.tipo === 'laboral'} 
                             required
                             /> Laboral
 
                             <input type="radio" name="tipoExperiencia" 
                             value='voluntariado' className="ml-1"
-                            // onClick={ 
-                            //     () => this.setState()
-                                // this.setState({checkVoluntario: true 
-                                // }
-                            checked={this.state.tipo === 'voluntariado' }
+                            // checked={this.state.tipo === 'voluntariado' }
                             required
                             /> Voluntariado
 
                             <input type="radio" name="tipoExperiencia" 
-                            value='pasantia' className="ml-1"
-                            // onClick={ () => this.setState({checkPasantia: true })}
-                            checked={this.state.tipo === 'pasantia'}
+                            value='pasantia' className="ml-1 mb-3"
+                            // checked={this.state.tipo === 'pasantia'}
                             required
-                            /> Pasantía
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
+                            /> Pasantía 
+                            {/* <br/> */}
+
                             <input placeholder='Puesto' value={this.state.puesto} 
-                            className="ml-1" name='puesto' type="text" 
+                            className="ml-1 mb-1 d-block col-md-8 form-control" 
+                            name='puesto' type="text" 
                             onChange={this.onChangePuesto} required/>
-                        </div>
-                        <div className="col">
-                            <input className="ml-1" value={this.state.empresa} 
+
+                            <input className="ml-1 mb-1 d-block col-md-8 form-control" 
+                            value={this.state.empresa} 
                             placeholder="Empresa" type="text" name="empresa" 
                             onChange={this.onChangeEmpresa} required/>
-                        </div>
-                    </div>
-                    <div className="row mt-2">
-                        <div className="col">
-                            {/* <label>Área/Sector/Departamento</label> */}
-                            <input className="ml-1" type="text" value={this.state.area} 
+
+                            <input className="ml-1 mb-3 d-block col-md-8 form-control" 
+                            type="text" value={this.state.area} 
                             placeholder='Área/Sector/Departamento'
                             onChange={this.onChangeArea} name="area" required/>
-                        </div>
-                    </div>
-                    <div className="row my-2">
-                        <div className="col d-flex align-items-center">
-                            <label className="mr-1">Funciones del puesto</label>
-                            <textarea rows="5" onChange={this.onChangeFunciones}    
+
+                            <textarea rows="5" onChange={this.onChangeFunciones}  
+                            className="form-control col-md-8 mb-2"  
                             value={this.state.algo}  
+                            placeholder="Funciones del puesto"
                             name="funciones"></textarea>
-                        </div>
-                    </div>
-                    <div className="row my-2" required>
-                        <div className="col">
-                            <label>Fecha Ingreso</label>
-                            <input className="ml-1" type="month"
+
+                            <label className='d-block'>Fecha Ingreso</label>
+                            <input className="mb-1 col-md-6 form-control d-inline" type="month"
                             onChange={this.onChangeFechaIngreso}
                             value={this.state.fechaIngreso}
                             required/>
-                        </div>
-                        <div className="col">
-                            <label>Fecha Salida</label>
-                            <input className="mx-1" type="month"     
+
+                            <br/>
+
+                            <label className='d-block'>Fecha Salida</label>
+                            <input className="mr-2 mb-2 col-md-6 form-control d-inline" type="month"     
                             onChange={this.onChangeFechaSalida}  
                             value={this.state.fechaSalida}
                             disabled={!this.state.checked} 
                             required/> 
 
-                            Actualmente <input type="checkbox" 
+                            <div className='d-block mb-2'>
+                            <label 
+                            // className='d-block'
+                            >Actualmente</label>
+                             <input type="checkbox" 
+                             className='ml-2'
                             onChange={this.onChangeActualmente}
                             checked={!this.state.checked}/> 
-                        </div>   
-                    </div>
-                    <div className="row">
-                        <div className="col d-flex justify-content-end">
-                            <input type="submit" value="Agregar" className="btn btn-info" />
+                            </div>
+                        {/* </div>    */}
+                    {/* </div> */}
+                    {/* <div className="row"> */}
+                        {/* <div className="col d-flex justify-content-end"> */}
+                            <input type="submit" value="Agregar" className="btn btn-info col col-md-8" />
                         </div>
                     </div>
                 </form>
