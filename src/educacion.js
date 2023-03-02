@@ -1,7 +1,6 @@
 import { React, Component } from 'react';
 import EducacionElement from './educacion-element';
 import { Link } from 'react-router-dom';
-// import Select from 'react-select';
 
 export default class Educacion extends Component {
 
@@ -534,9 +533,7 @@ export default class Educacion extends Component {
             showLogro: '',
             logro: '',
             educacionLogros: '',
-            showLogro: '',
             encurso: true
-            
         })
         // console.log('Resultado despues', this.state.gradoList);
     }
@@ -546,55 +543,53 @@ export default class Educacion extends Component {
 
     render() {
         return(
-            <div>
+            <div className='container '>
                 <form onSubmit={this.addEducacion}>
-                <div className='row'>
-                    <div className='col'>
+                <div className='row d-flex justify-content-center'>
+                    <div className='col col-md-6'>
                         <h1>Educación</h1>
-                    </div> 
-                </div>
-                <div className="row">
-                    <div className="col">
-                        <label>Tipo de educación</label>                       
-                        <select onChange={this.onChangeEducacion} required>
+
+                        <label className='d-block'>Tipo de educación</label>                       
+                        <select className='col-8 form-control' onChange={this.onChangeEducacion} required>
                             <option  
                             value=''
                             key={this.state.educacion[0]}
-                             selected={this.state.selectValue == '' ? 'selected': ''}>
+                             selected={this.state.selectValue === '' ? 'selected': ''}>
                                 {this.state.educacion[0]}
                             </option>
                             <option value={this.state.educacion[1]} key={this.state.educacion[1]}
-                            selected={this.state.selectValue == 'Formal' ? 'selected': ''}>
+                            selected={this.state.selectValue === 'Formal' ? 'selected': ''}>
                                 {this.state.educacion[1]}
                             </option>
                             <option value={this.state.educacion[2]} key={this.state.educacion[2]}
-                            selected={this.state.selectValue == 'Continuada' ? 'selected': ''}>
+                            selected={this.state.selectValue === 'Continuada' ? 'selected': ''}>
                                 {this.state.educacion[2]}
                             </option>
                         </select>
 
-                    </div>
-                </div>
-                <div className="row">
-                    <div className='col' onChange={this.onChangeTipoEducacion} >
-                        {/* {this.state.tipo} */}
+                    <div className='col-8 mt-2' onChange={this.onChangeTipoEducacion} >
+
                         <div className={this.state.selectValue === 'Formal' ? '' : 'd-none'}>
                            <input type="radio" name="tipoEducacion" 
                            value="bachiller" required
                            checked={this.state.tipoEducacion === 'bachiller'}/> Bachiller
                            <input type="radio" name="tipoEducacion" value="tecnico"
-                           checked={this.state.tipoEducacion === 'tecnico'} 
+                           className='ml-1' checked={this.state.tipoEducacion === 'tecnico'} 
                            required/> Técnico
                            <input type="radio" name="tipoEducacion" value="certificacion" 
+                           className='ml-1' 
                            checked={this.state.tipoEducacion === 'certificacion'} required/> Certificación
                            <input type="radio" name="tipoEducacion" value="grado"
-                           checked={this.state.tipoEducacion === 'grado'} required/> Grado
+                           checked={this.state.tipoEducacion === 'grado'} className='ml-1'
+                           required/> Grado
                            <input type="radio" name="tipoEducacion" value="especialidad" 
                            checked={this.state.tipoEducacion === 'especialidad'} required/> Especialidad
                            <input type="radio" name="tipoEducacion" value="master"
-                           checked={this.state.tipoEducacion === 'master'} required/> Máster
+                           className='ml-1' checked={this.state.tipoEducacion === 'master'} 
+                           required/> Máster
                            <input type="radio" name="tipoEducacion" value="doctorado"
-                           checked={this.state.tipoEducacion === 'doctorado'}  required/> Doctorado
+                           className='ml-1' checked={this.state.tipoEducacion === 'doctorado'}
+                            required/> Doctorado
                         </div>
                         <div className={this.state.selectValue === 'Continuada' ? '' : 'd-none'}>
                            <input type="radio" name="tipoEducacion" value="curso"
@@ -605,50 +600,38 @@ export default class Educacion extends Component {
                            checked={this.state.tipoEducacion === 'diplomado'} required/> Diplomado
                         </div>
                     </div>
-                </div>
-                <div className="row">
-                    <div className="col">
-                        <input type="text" placeholder="Título" name='titulo' 
+                        <input className='d-block mb-2 mt-3 col-8 form-control' type="text" placeholder="Título" name='titulo' 
                         onChange={this.onChangeTitulo} value={this.state.titulo} required/>
 
-                    </div>
-                    <div className="col">
-                        <input type="text" placeholder="Institución" name='institucion'
+                        <input className='d-block col-8 form-control' type="text" placeholder="Institución" name='institucion'
                          onChange={this.onChangeInstitucion} value={this.state.institucion} required/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
-                        <label>Fecha Inicio</label>
-                        <input type="month" name='fechaInicio' 
+
+                        <label className='d-block mt-2'>Fecha Inicio</label>
+                        <input className='' type="month" name='fechaInicio' 
                         value={this.state.fechaInicio}
                         onChange={this.onChangeFechaInicio} required/>
-                    </div>
-                    <div className="col">
-                        <label>Fecha Fin</label>
-                        <input type="month" name='fechaFin' disabled={!this.state.encurso}
+
+                        <label className='d-block mt-2'>Fecha Fin</label>
+                        <input className="mr-2" type="month" name='fechaFin' disabled={!this.state.encurso}
                          onChange={this.onChangeFechaFin}
                          value={this.state.fechaFin}
                          required={this.state.encurso}/>
                         En curso <input type='checkbox' onChange={this.onChangeEnCurso}
                         checked={!this.state.encurso}/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
-                        <div>
+
+                        <div className='mt-3'>
                             Logros en educación <input type="checkbox" onChange={this.onChangeShowLogro} 
                             checked={this.state.showLogro}/>    
                         </div>
-                        <div onChange={this.onChangeLogro}>
-                            <textarea disabled={!this.state.showLogro} value={this.state.educacionLogros}></textarea>
+                        <div className='mt-1' onChange={this.onChangeLogro}>
+                            <textarea className="col-8" disabled={!this.state.showLogro} 
+                            value={this.state.educacionLogros} rows="4"
+                            ></textarea>
                         </div>
-                    </div>
+
+                        <input className="col-8 btn btn-info" type="submit" value="Agregar"/>
+                        
                 </div>
-                <div className="row">
-                    <div className="col d-flex justify-content-end">
-                        <input type="submit" value="agregar"/>
-                    </div>
                 </div>
                 <div className='row'>
                     <div className='col'>

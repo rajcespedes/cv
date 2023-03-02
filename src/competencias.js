@@ -1,11 +1,11 @@
 import {React, Component} from 'react';
 import languages from './languages';
-import ReactStars from 'react-rating-stars-component';
+// import ReactStars from 'react-rating-stars-component';
 import IdiomasComponent from './idioma-component';
 import ReferenciaComponent from './referencia-component';
 // import { toHaveDescription } from '@testing-library/jest-dom/dist/matchers';
-import Rating from 'react-rating';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import Rating from 'react-rating';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { star } from '@fortawesome/fontawesome-svg-core';
 // import ProyectoComponent from './proyecto-component';
 import { Link } from 'react-router-dom';
@@ -86,7 +86,7 @@ export default class Competencias extends Component {
 
     addIdioma(e){
 
-        if (this.state.idiomaSeleccionado != 'Selected') {
+        if (this.state.idiomaSeleccionado !== 'Selected') {
 
         var idiomasArray = this.state.idiomasList;
 
@@ -156,7 +156,7 @@ export default class Competencias extends Component {
 
         e.preventDefault();
 
-        if ( e.target.value != '') { 
+        if ( e.target.value !== '') { 
 
         var competenciaArray = this.state.competenciaList;
 
@@ -314,36 +314,39 @@ export default class Competencias extends Component {
 
     render() {
         return(
-            <div>
-                <div>
-                    <div>
-                      <h1>Competencias</h1>  
-                      <input placeholder='Competencia' value={this.state.competencia} type="text" onChange={this.onChangeCompetencia} /> 
-                      <button className="ml-5 btn btn-info btn-sm" onClick={this.addCompetencia}
-                      value={this.state.competencia}>Agregar habilidad</button>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
+            <div className='container'>
+                <div className='d-flex justify-content-center row'>
+                    <div className='col col-md-6'>
+                        <div className='row d-block'>
+                            <h1>Competencias</h1>
+                            <input placeholder='Competencia' value={this.state.competencia} 
+                            type="text" onChange={this.onChangeCompetencia} /> 
+                            <button className="ml-5 btn btn-info btn-sm" onClick={this.addCompetencia}
+                            value={this.state.competencia}>Agregar habilidad</button>
+                        </div>
+                    {/* </div> */}
+                {/* </div> */}
+                {/* <div className="row"> */}
+                    {/* <div className="col"> */}
                         <ul>
                             {this.state.competenciaList.map( e => <li key={e}>{e}</li>)}
                         </ul>
-                    </div>
-                </div>
-                <div className='row'>
-                    <div className='col'>
+                    {/* </div> */}
+                {/* </div> */}
+                {/* <div className='row'> */}
+                    {/* <div className='col'> */}
                         <h1>Idiomas</h1>
-                    </div>
-                </div>
-                <div className='row'>
-                <div className="col">
+                    {/* </div> */}
+                {/* </div> */}
+                {/* <div className='row'> */}
+                {/* <div className="col"> */}
                     <h3>Idioma</h3>
                         <select onChange={this.onChangeIdioma}>
                             <option selected={ this.state.idiomaSeleccionado === 'selected' ? 'selected' : ''}>Seleccione</option>
                             {this.state.idiomas.map( e => <option value={e}>{e}</option>)}
                         </select>
-                    </div>
-                    <div className="col">
+                    {/* </div> */}
+                    {/* <div className="col"> */}
                         <h3>Nivel</h3>
 
                         <select onChange={this.ratingChanged}>
@@ -351,64 +354,64 @@ export default class Competencias extends Component {
                             selected={this.state.idiomaLevel === 'selected' ? 'selected' : ''} >Seleccione</option>
                             {this.state.languageSelect.map( e => <option key={e} value={e}> {e}</option>)}
                         </select>
-                    </div>
-                    <div className="col d-flex align-items-center">
+                    {/* </div> */}
+                    {/* <div className="col d-flex align-items-center"> */}
                         <button className="ml-5 btn btn-info btn-sm" onClick={this.addIdioma}>Agregar idioma</button>
-                    </div>
-                    </div>
-                <div className="row mt-5">
-                    <div className="col">
+                    {/* </div> */}
+                    {/* </div> */}
+                {/* <div className="row mt-5"> */}
+                    {/* <div className="col"> */}
                         <label className="font-weight-bold">{ this.state.idiomasList.length > 0 ? 'Idioma' : ''}</label>
-                    </div>
-                    <div className="col">   
+                    {/* </div> */}
+                    {/* <div className="col">    */}
                         <label className="font-weight-bold">{ this.state.idiomasList.length > 0 ? 'Nivel' : ''}</label>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
+                    {/* </div> */}
+                {/* </div> */}
+                {/* <div className="row"> */}
+                    {/* <div className="col"> */}
                         {this.state.idiomasList}                       
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
+                    {/* </div> */}
+                {/* </div> */}
+                {/* <div className="row"> */}
+                    {/* <div className="col"> */}
                         <h1>Proyectos</h1>
-                    </div>
-                </div>
-                <div className="row mb-2">
-                    <div className="col">
+                    {/* </div> */}
+                {/* </div> */}
+                {/* <div className="row mb-2"> */}
+                    {/* <div className="col"> */}
                         <input type="text" placeholder='Nombre del proyecto' 
                         value={this.state.nombreProyecto}
                         onChange={this.onChangeNombreProyecto}/>
-                    </div>
-                </div>
-                <div className="row  mb-1">
-                    <div className="col-2">
+                    {/* </div> */}
+                {/* </div> */}
+                {/* <div className="row  mb-1"> */}
+                    {/* <div className="col-2"> */}
                         <textarea placeholder="Descripcion/Impacto" 
                         value={this.state.descripcionProyecto}
                         onChange={this.onChangeDescripcionProyecto}></textarea> 
-                    </div>
-                </div>
-                <div className="row  mb-2">
-                    <div className="col-2">
+                    {/* </div> */}
+                {/* </div> */}
+                {/* <div className="row  mb-2"> */}
+                    {/* <div className="col-2"> */}
                         <input type="date" 
                         value={this.state.inicioProyecto}
                         onChange={this.onChangeInicioProyecto} />
-                    </div>
-                </div>
-                <div className="row  mb-2">
-                    <div className="col-2">
+                    {/* </div> */}
+                {/* </div> */}
+                {/* <div className="row  mb-2"> */}
+                    {/* <div className="col-2"> */}
                         <input type="date" 
                         value={this.state.finProyecto}
                         onChange={this.onChangeFinProyecto}/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-2">
+                    {/* </div> */}
+                {/* </div> */}
+                {/* <div className="row"> */}
+                    {/* <div className="col-2"> */}
                         <button className="ml-5 btn btn-info btn-sm" onClick={this.addProyecto}>Agregar proyecto</button>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
+                    {/* </div> */}
+                {/* </div> */}
+                {/* <div className="row"> */}
+                    {/* <div className="col"> */}
                         {/* {this.state.listProyectos.length > 0 ? this.state.listProyectos.map(e => 
                              <li>{e.listDescripcionProyecto}<li/> ): ''} */}
                              {this.state.listProyectos.map( e => 
@@ -419,50 +422,50 @@ export default class Competencias extends Component {
                                  <p><strong>Fecha fin:</strong> {e.listFechaFinProyecto}</p>
                              </div>
                              )}
-                    </div>
-                </div>
-                <div className="row  mb-2">
-                    <div className="col-2">
+                    {/* </div> */}
+                {/* </div> */}
+                {/* <div className="row  mb-2"> */}
+                    {/* <div className="col-2"> */}
                         <h1>Referencias</h1>
-                    </div>
-                </div>
-                <div className="row  mb-2">
-                    <div className="col">
+                    {/* </div> */}
+                {/* </div> */}
+                {/* <div className="row  mb-2"> */}
+                    {/* <div className="col"> */}
                         <label className="mr-1">Tipo de referencia</label>
                         <select onChange={this.onChangeTipoReferencia}>                            
                             <option>Seleccione</option>
                             {this.state.referencia.map( e => <option>{e}</option>)}
                         </select>
-                    </div>
-                </div>
-                <div className="row  mb-2">
-                    <div className="col-2">
+                    {/* </div> */}
+                {/* </div> */}
+                {/* <div className="row  mb-2"> */}
+                    {/* <div className="col-2"> */}
                         <input type="text" placeholder='Nombre' 
                         value={this.state.nombre} onChange={this.onChangeNombre}/>
-                    </div>
-                </div>
-                <div className="row mb-2">
-                    <div className="col-2">
+                    {/* </div> */}
+                {/* </div> */}
+                {/* <div className="row mb-2"> */}
+                    {/* <div className="col-2"> */}
                         <input type="text" placeholder='Número' 
                         value={this.state.numero} onChange={this.onChangeNumero}/>
-                    </div>
-                </div>
-                <div className="row  mb-2">
-                    <div className="col-2">
+                    {/* </div> */}
+                {/* </div> */}
+                {/* <div className="row  mb-2"> */}
+                    {/* <div className="col-2"> */}
                         <input placeholder='Puesto o Relación' type="text" 
                         value={this.state.puesto}
                         onChange={this.onChangePuesto}/>
-                    </div>
-                </div>              
-                <div className="row">
-                    <div className="col-2 d-flex align-items-end">
-                        <div>
+                    {/* </div> */}
+                {/* </div>               */}
+                {/* <div className="row"> */}
+                    {/* <div className="col-2 d-flex align-items-end"> */}
+                        {/* <div> */}
                             <button className="btn btn-info btn-sm" onClick={this.addReferencia}>Agregar referencia</button>
-                        </div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
+                        {/* </div> */}
+                    {/* </div> */}
+                {/* </div> */}
+                {/* <div className="row"> */}
+                    {/* <div className="col"> */}
                     {this.state.referenciaList.length > 0 || this.state.referenciaPersonalList.length > 0 ? 
                     <div className="row">
                         <div className="col">
@@ -479,18 +482,18 @@ export default class Competencias extends Component {
                         </div>
                 </div> : ''
                 }
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
+                    {/* </div> */}
+                {/* </div> */}
+                {/* <div className="row"> */}
+                    {/* <div className="col"> */}
                         {this.state.referenciaList}
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
+                    {/* </div> */}
+                {/* </div> */}
+                {/* <div className="row"> */}
+                    {/* <div className="col"> */}
                         {this.state.referenciaPersonalList}
-                    </div>
-                </div>
+                    {/* </div> */}
+                {/* </div> */}
                 <div>
                     { 
                     this.state.listCompetencia.length > 0 
@@ -546,6 +549,8 @@ export default class Competencias extends Component {
                         Finalizar
                     </Link> 
                    : '' }
+                </div>
+                    </div>
                 </div>
             </div>
         );
