@@ -338,9 +338,9 @@ export default class Competencias extends Component {
 
                         </div>
                         <h1>Idiomas</h1>
-                        <div className='row'>
+                        {/* <div className='row'>
                             
-                        </div>
+                        </div> */}
                         <div className='row'>
                             <div className='col'>
                                 <h3>Idioma</h3>
@@ -348,6 +348,14 @@ export default class Competencias extends Component {
                                     <option selected={ this.state.idiomaSeleccionado === 'selected' ? 'selected' : ''}>Seleccione</option>
                                     {this.state.idiomas.map( e => <option value={e}>{e}</option>)}
                                 </select>
+
+                                {/* <div className='col'> */}
+                                <label className="font-weight-bold d-block">{ this.state.idiomasList.length > 0 ? 'Idioma' : ''}</label>
+
+                                {this.state.idiomasList.map(el => <p>{el.props.idioma}</p>)}   
+
+                                {/* </div> */}
+
                             </div>
                             <div className='col'>
                                 <h3>Nivel</h3>
@@ -356,16 +364,34 @@ export default class Competencias extends Component {
                                     selected={this.state.idiomaLevel === 'selected' ? 'selected' : ''} >Seleccione</option>
                                     {this.state.languageSelect.map( e => <option key={e} value={e}> {e}</option>)}
                                 </select>
-                                <button className="ml-1 btn btn-info btn-sm" onClick={this.addIdioma}>Agregar idioma</button>
+
+                                <label className="font-weight-bold d-block">{ this.state.idiomasList.length > 0 ? 'Nivel' : ''}</label>
+
+                                {this.state.idiomasList.map(el => <p>{el.props.idiomaLevel}</p>)}   
+                                
+
                             </div>
+                           
+
+                        </div>
+                        <div className='row'>
+                            {/* <div className='col'>
                             <label className="font-weight-bold">{ this.state.idiomasList.length > 0 ? 'Idioma' : ''}</label>
 
                             {this.state.idiomasList.map(el => <p>{el.props.idioma}</p>)}   
 
-                            <label className="font-weight-bold">{ this.state.idiomasList.length > 0 ? 'Nivel' : ''}</label>
+                            </div> */}
+                            <div className='col'>
+                                {/* <label className="font-weight-bold">{ this.state.idiomasList.length > 0 ? 'Nivel' : ''}</label>
 
-                            {/* {this.state.idiomasList.map(el => <p>{el.level.props}</p>)} */}
+                                {this.state.idiomasList.map(el => <p>{el.props.idiomaLevel}</p>)}    */}
 
+                                <div className='col align-items-end'>
+                                    
+                                    <button className="ml-1 btn btn-info btn-sm" onClick={this.addIdioma}>Agregar idioma</button>
+                                </div>
+
+                            </div>
                         </div>
                                                                   
    
