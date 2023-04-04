@@ -112,17 +112,6 @@ export default class Demograficos extends Component  {
         
         e.preventDefault();
 
-        // Check.history.push('/experiencia');
-
-       
-        // history.push('/experiencia');
-
-        // console.log(e);
-
-        // this.setState({
-
-        // });
-
         const demoForm = {
             nombres: this.state.nombres,
             apellidos: this.state.apellidos,
@@ -138,12 +127,6 @@ export default class Demograficos extends Component  {
         
         console.log(demoForm);
 
-        // axios.post('http://localhost:5000/',demoForm)
-        // .then(res => console.log(res));
-        
-
-        // window.location = '/experiencia';
-
         Check.history({
             pathname: '/experiencia',
             state: {
@@ -152,18 +135,10 @@ export default class Demograficos extends Component  {
                 }
             }
         });
-
-        // console.log(window.localStorag``)
-
     
     }
 
-    // onClickButton() {
-    //     var counter = this.state.count + 1;
-    //     this.setState({ count: counter});
-    // }
-    
-    render(){
+     render(){
     return( 
         <div className="container">
             <form onSubmit={this.onSubmit}>
@@ -257,9 +232,6 @@ export default class Demograficos extends Component  {
             <div className="row">
                 <div className="col d-flex justify-content-end">
                     < button type="Submit" value='Prueba'> Submit </button>
-                    {/* <button type="submit" onClick={ () => history.push('/experiencia')} > */}
-                        {/* Probar
-                    </button> */}
 
                     <Link
                     className="btn btn-info"

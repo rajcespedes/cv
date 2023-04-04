@@ -294,15 +294,13 @@ export default class Experiencia extends Component {
         // notes.value = '';
     // }
     }
-
-    
-
+ 
     render() {
         return(
-            <div className='container '>
+            <div className='container'>
                 <form onSubmit={this.onSubmit}>
-                    <div className="row justify-content-center">
-                        <div className="col col-md-6 m-0">
+                    <div className="row d-flex justify-content-center">
+                        <div className="col col-md-4">
                             <h1>Experiencia</h1>
                            
                             <label className="font-weight-bold">Tipo de experiencia</label>
@@ -328,28 +326,29 @@ export default class Experiencia extends Component {
                             {/* <br/> */}
 
                             <input placeholder='Puesto' value={this.state.puesto} 
-                            className="ml-1 mb-1 d-block col-md-8 form-control" 
+                            className="ml-1 mb-1 d-block form-control" 
                             name='puesto' type="text" 
                             onChange={this.onChangePuesto} required/>
 
-                            <input className="ml-1 mb-1 d-block col-md-8 form-control" 
+                            <input className="ml-1 mb-1 d-block form-control" 
                             value={this.state.empresa} 
                             placeholder="Empresa" type="text" name="empresa" 
                             onChange={this.onChangeEmpresa} required/>
 
-                            <input className="ml-1 mb-3 d-block col-md-8 form-control" 
+                            <input className="ml-1 mb-3 d-block form-control" 
                             type="text" value={this.state.area} 
                             placeholder='Área/Sector/Departamento'
                             onChange={this.onChangeArea} name="area" required/>
 
                             <textarea rows="5" onChange={this.onChangeFunciones}  
-                            className="form-control col-md-8 mb-2"  
+                            className="form-control mb-2"  
                             value={this.state.algo}  
                             placeholder="Funciones del puesto"
                             name="funciones"></textarea>
 
                             <label className='d-block'>Fecha Ingreso</label>
-                            <input className="mb-1 col-md-6 form-control d-inline" type="month"
+                            <input className="mb-1 col-md-6 form-control d-inline" 
+                            type="month" 
                             onChange={this.onChangeFechaIngreso}
                             value={this.state.fechaIngreso}
                             required/>
@@ -357,13 +356,14 @@ export default class Experiencia extends Component {
                             <br/>
 
                             <label className='d-block'>Fecha Salida</label>
-                            <input className="mr-2 mb-2 col-md-6 form-control d-inline" type="month"     
+                            <input className="mr-2 mb-2 col-md-6 form-control d-inline" 
+                            type="month" 
                             onChange={this.onChangeFechaSalida}  
-                            value={this.state.fechaSalida}
+                            value={this.state.fechaSalida} 
                             disabled={!this.state.checked} 
                             required/> 
 
-                            <div className='d-block mb-2'>
+                            {/* <div className='d-block mb-2'> */}
                             <label 
                             // className='d-block'
                             >Actualmente</label>
@@ -371,12 +371,14 @@ export default class Experiencia extends Component {
                              className='ml-2'
                             onChange={this.onChangeActualmente}
                             checked={!this.state.checked}/> 
-                            </div>
+                            <br/>
+                            {/* </div> */}
                         {/* </div>    */}
                     {/* </div> */}
                     {/* <div className="row"> */}
                         {/* <div className="col d-flex justify-content-end"> */}
-                            <input type="submit" value="Agregar" className="btn btn-info col col-md-8" />
+                            <input type="submit" value="Agregar" 
+                            className="btn btn-info col" />
                         </div>
                     </div>
                 </form>

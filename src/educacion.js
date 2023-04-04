@@ -545,19 +545,22 @@ export default class Educacion extends Component {
         return(
             <div className='container '>
                 <form onSubmit={this.addEducacion}>
-                <div className='row d-flex justify-content-center'>
-                    <div className='col col-md-6'>
+                <div className="row d-flex justify-content-center">
+                        <div className="col col-md-6">
                         <h1>Educación</h1>
 
-                        <label className='d-block'>Tipo de educación</label>                       
-                        <select className='col-8 form-control' onChange={this.onChangeEducacion} required>
+                        <label className='d-block'>Tipo de educación</label>
+                        {this.state.educacion.map( e => <p>{e}</p>)}                       
+                        <select className='form-control' onChange={this.onChangeEducacion} required>
+                            
                             <option  
                             value=''
                             key={this.state.educacion[0]}
                              selected={this.state.selectValue === '' ? 'selected': ''}>
                                 {this.state.educacion[0]}
                             </option>
-                            <option value={this.state.educacion[1]} key={this.state.educacion[1]}
+                            <option 
+                            value={this.state.educacion[1]} key={this.state.educacion[1]}
                             selected={this.state.selectValue === 'Formal' ? 'selected': ''}>
                                 {this.state.educacion[1]}
                             </option>
@@ -631,7 +634,7 @@ export default class Educacion extends Component {
 
                         <input className="col-8 btn btn-info" type="submit" value="Agregar"/>
                         
-                </div>
+                 </div>
                 </div>
                 <div className='row'>
                     <div className='col'>
