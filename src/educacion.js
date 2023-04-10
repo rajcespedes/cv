@@ -72,6 +72,10 @@ export default class Educacion extends Component {
 
     onChangeEducacion(e){
 
+        console.log(e.target.value);
+
+        // console.log(this.state.selectValue);
+
         this.setState({
             selectValue: e.target.value
         })
@@ -546,16 +550,21 @@ export default class Educacion extends Component {
             <div className='container '>
                 <form onSubmit={this.addEducacion}>
                 <div className="row d-flex justify-content-center">
-                        <div className="col col-md-6">
+                        <div className="col col-md-4">
                         <h1>Educación</h1>
 
                         <label className='d-block'>Tipo de educación</label>
-                        {this.state.educacion.map( e => <p>{e}</p>)}                       
-                        <select className='form-control' onChange={this.onChangeEducacion} required>
+
+                        <select className='form-control' onChange={this.onChangeEducacion}>
+                            {this.state.educacion.map( e => 
+                                <option key={e} value={e}>{e}
+                                </option>)}                       
+                        </select>
+                        {/* <select className='form-control' onChange={this.onChangeEducacion} required>
                             
                             <option  
                             value=''
-                            key={this.state.educacion[0]}
+                            key={this.state.educacion[0]}]
                              selected={this.state.selectValue === '' ? 'selected': ''}>
                                 {this.state.educacion[0]}
                             </option>
@@ -568,15 +577,17 @@ export default class Educacion extends Component {
                             selected={this.state.selectValue === 'Continuada' ? 'selected': ''}>
                                 {this.state.educacion[2]}
                             </option>
-                        </select>
+                        </select> */}
 
-                    <div className='col-8 mt-2' onChange={this.onChangeTipoEducacion} >
+                      <div onChange={this.onChangeTipoEducacion} >
 
                         <div className={this.state.selectValue === 'Formal' ? '' : 'd-none'}>
                            <input type="radio" name="tipoEducacion" 
                            value="bachiller" required
-                           checked={this.state.tipoEducacion === 'bachiller'}/> Bachiller
-                           <input type="radio" name="tipoEducacion" value="tecnico"
+                        //    checked={this.state.tipoEducacion === 'bachiller'}
+                           onChange={console.log()}
+                           readOnly={true}/> Bachiller
+                           {/* <input type="radio" name="tipoEducacion" value="tecnico"
                            className='ml-1' checked={this.state.tipoEducacion === 'tecnico'} 
                            required/> Técnico
                            <input type="radio" name="tipoEducacion" value="certificacion" 
@@ -592,7 +603,7 @@ export default class Educacion extends Component {
                            required/> Máster
                            <input type="radio" name="tipoEducacion" value="doctorado"
                            className='ml-1' checked={this.state.tipoEducacion === 'doctorado'}
-                            required/> Doctorado
+                            required/> Doctorado */}
                         </div>
                         <div className={this.state.selectValue === 'Continuada' ? '' : 'd-none'}>
                            <input type="radio" name="tipoEducacion" value="curso"
@@ -603,6 +614,7 @@ export default class Educacion extends Component {
                            checked={this.state.tipoEducacion === 'diplomado'} required/> Diplomado
                         </div>
                     </div>
+
                         <input className='d-block mb-2 mt-3 col-8 form-control' type="text" placeholder="Título" name='titulo' 
                         onChange={this.onChangeTitulo} value={this.state.titulo} required/>
 
