@@ -51,8 +51,8 @@ const NewDemo = () => {
     <div className="container">
                 <form onSubmit={handleSubmit}>
                  
-                <div className="row justify-content-center">
-                    <div className="col col-md-6 m-0">
+                <div className="row d-flex justify-content-center">
+                        <div className="col col-md-4">
                         <h2>Datos demográficos</h2>                                         
 
                         <input onChange={handleChange} type="text"

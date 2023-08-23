@@ -47,6 +47,8 @@ export default class Experiencia extends Component {
             experienciaForm: this.props.location.state.passNombre
         });
         console.log(this.props.location.state.passDatos);
+        
+        // console.log(new Date().getMonth()+1 + "/" + new Date().getDay()  + "/" + new Date().getFullYear());
     }
 
     onChangePuesto(e){
@@ -144,6 +146,7 @@ export default class Experiencia extends Component {
                 tipo: 'pasantia'
             });
         }
+        // alert(this.state.tipo); 
     } 
 
     onButtonClick(e){
@@ -305,7 +308,8 @@ export default class Experiencia extends Component {
                            
                             <label className="font-weight-bold">Tipo de experiencia</label>
                              <br/>
-
+                             <div onChange={this.onChangeTipo}
+                             >
                             <input type="radio" name="tipoExperiencia" 
                             value='laboral'
                             // checked={this.state.tipo === 'laboral'} 
@@ -324,6 +328,7 @@ export default class Experiencia extends Component {
                             required
                             /> Pasantía 
                             {/* <br/> */}
+                            </div>
 
                             <input placeholder='Puesto' value={this.state.puesto} 
                             className="ml-1 mb-1 d-block form-control" 
@@ -383,33 +388,36 @@ export default class Experiencia extends Component {
                     </div>
                 </form>
                 
-                <div className="row">
-                    <div className="col">
+                <div className="row d-flex justify-content-center">
+                        <div className="col col-md-4">
+                {/* <div className="row"> */}
+                    {/* <div className="col"> */}
                     { this.state.list.length > 0
                     || this.state.voluntariado.length > 0
                     || this.state.pasantia.length > 0 ? <h1>Historial</h1> : '' }
-                    </div>
-                </div>
-                <div>
+                    {/* {console.log('prueba ', this.state.voluntariadoArray)} */}
+                    {/* </div> */}
+                {/* </div> */}
+                {/* // <div> */}
                     { this.state.list.length > 0 ? <h3>Laboral</h3> : ''}
-                </div>
-                <div>
+                {/* </div> */}
+                {/* <div> */}
                     {this.state.list}
-                </div>
-                <div>
+                {/* </div> */}
+                {/* <div> */}
                     { this.state.voluntariado.length > 0 ? <h3>Voluntariado</h3> : ''}
-                </div>
-                <div>
+                {/* </div> */}
+                {/* <div> */}
                     {this.state.voluntariado}
-                </div>
-                <div>
+                {/* </div> */}
+                {/* <div> */}
                     { this.state.pasantia.length > 0 ? <h3>Pasantía</h3> : ''}
-                </div>
-                <div>
+                {/* </div> */}
+                {/* <div> */}
                     {this.state.pasantia}
-                </div>
-                <div className="row">
-                    <div className="col d-flex justify-content-end">
+                {/* </div> */}
+                {/* <div className="row"> */}
+                    {/* <div className="col d-flex justify-content-end"> */}
                         { this.state.list.length > 0
                     || this.state.voluntariado.length > 0
                     || this.state.pasantia.length > 0 ? 

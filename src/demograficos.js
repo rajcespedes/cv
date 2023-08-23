@@ -142,13 +142,13 @@ export default class Demograficos extends Component  {
     return( 
         <div className="container">
             <form onSubmit={this.onSubmit}>
-            <div className="row">
-                <div className="col d-flex justify-content-center">
+            <div className="row d-flex justify-content-center">
+                    <div className="col col-md-4">
                     <h1>Datos demográficos</h1>     
-                </div>
-            </div>
-            <div className="row mb-3">
-                <div className="col d-flex justify-content-center form-group">
+                {/* </div> */}
+            {/* </div> */}
+            {/* <div className="row mb-3"> */}
+                {/* <div className="col d-flex justify-content-center form-group"> */}
                     <label>Nombres</label>
                     <input onChange={this.onChangeNombre} type="text" value={this.state.nombres} 
                     required/>
@@ -156,30 +156,30 @@ export default class Demograficos extends Component  {
                     <label>Apellidos</label>
                     <input onChange={this.onChangeApellidos} type="text" value={this.state.apellidos}
                     required/>
-                </div>
-            </div>
+                {/* </div> */}
+            {/* </div> */}
             
-             <div className="row mb-3">
-                <div className="col d-flex justify-content-center">
+             {/* <div className="row mb-3"> */}
+                {/* <div className="col d-flex justify-content-center"> */}
                     <label>Ocupación</label>
                     <input onChange={this.onChangeOcupacion} type="text" name="ocupacion"
                     required/> 
-                </div>
-            </div>
-            <div className="row mb-3">
-                <div className="col d-flex justify-content-center">
+                {/* </div> */}
+            {/* </div> */}
+            {/* <div className="row mb-3"> */}
+                {/* <div className="col d-flex justify-content-center"> */}
                     <label>Barrio/Municipio</label>
                     <input onChange={this.onChangeBarrio} type="text" name="barrio"
                     required/>
-                </div>  
-            </div>
-            <div className="row">
-                <div className="col d-flex justify-content-center">
+                {/* </div>   */}
+            {/* </div> */}
+            {/* <div className="row"> */}
+                {/* <div className="col d-flex justify-content-center"> */}
                     <h3>Contacto</h3>
-                </div>
-            </div>
-            <div className="row mb-3">
-                <div className="col d-flex justify-content-center">
+                {/* </div> */}
+            {/* </div> */}
+            {/* <div className="row mb-3"> */}
+                {/* <div className="col d-flex justify-content-center"> */}
                     <label>Celular</label>
                     <input onChange={this.onChangeCelular} type="tel" name='celular'
                     pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
@@ -189,17 +189,17 @@ export default class Demograficos extends Component  {
                     <input onChange={this.onChangeTelefono} type="tel" name="telefono"
                     pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
                     />
-                </div> 
-            </div>
-            <div className="row mb-3">
-                <div className="col d-flex justify-content-center">
+                {/* </div>  */}
+            {/* </div> */}
+            {/* <div className="row mb-3"> */}
+                {/* <div className="col d-flex justify-content-center"> */}
                     <label>Correo electrónico</label>
                     <input onChange={this.onChangeEmail} type="email"/>
 
-                </div> 
-            </div>
-            <div className="row mb-3">
-                <div className="col d-flex justify-content-center">
+                {/* </div>  */}
+            {/* </div> */}
+            {/* <div className="row mb-3"> */}
+                {/* <div className="col d-flex justify-content-center"> */}
                     <label>Licencia de conducir</label>
                     <select onChange={this.onChangeLicencia} >
                         <option value="0">No tengo</option>
@@ -209,28 +209,28 @@ export default class Demograficos extends Component  {
                         <option value="4">Autobuses y camiones de más de 2 ejes (Cat 4)</option>
                         <option value="5">Operador de equipos especiales: motoniveladora, retroexcavadora, etc. (Cat 5)</option>
                     </select>   
-                </div>
-            </div>
-            <div className="row">
-                <div className="col d-flex justify-content-center">
+                {/* </div> */}
+            {/* </div> */}
+            {/* <div className="row"> */}
+                {/* <div className="col d-flex justify-content-center"> */}
                     <label>Vehículo propio</label>
                     <div onChange={this.onChangeVehiculo}>
                         <input type="radio" value="Si"  name="vehiculo"/> <label>Si</label>
                         <input type="radio" value="No" name="vehiculo"/> <label>No</label>
                     </div>
-                </div>
-            </div>
-            <div className="row mb-3">
-                <div className="col d-flex justify-content-center">
+                {/* </div> */}
+            {/* </div> */}
+            {/* <div className="row mb-3"> */}
+                {/* <div className="col d-flex justify-content-center"> */}
                     <label>Disponibilidad de traslado</label>
                     <div onChange={this.onChangeTraslado}>
                         <input type="radio" value="Si"  name="traslado"/> <label>Si</label>
                         <input type="radio" value="No" name="traslado"/> <label>No</label>
                     </div>
                 </div>
-            </div>
-            <div className="row">
-                <div className="col d-flex justify-content-end">
+            {/* </div> */}
+            {/* <div className="row"> */}
+                {/* <div className="col d-flex justify-content-end"> */}
                     < button type="Submit" value='Prueba'> Submit </button>
 
                     <Link
@@ -257,8 +257,8 @@ export default class Demograficos extends Component  {
                         Check
                         </Link>
                         
+                {/* </div> */}
                 </div>
-             </div>
             </form>
         </div>
     );
