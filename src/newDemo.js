@@ -22,7 +22,8 @@ const NewDemo = () => {
     const handleChange = (e) => {
         setAllValues({...allValues, [e.target.name]: e.target.value});
         window.localStorage.getItem('allV',JSON.stringify(allValues.nombres));
-        console.log(window.localStorage.getItem('allV'));
+        // console.log(window.localStorage.getItem('allV'));
+        // console.log(allValues.nombres);
 
     }
 
@@ -49,10 +50,16 @@ const NewDemo = () => {
 
     return(
     <div className="container">
+        <div className="row">
+
+        
+        <div className="col-6">
                 <form onSubmit={handleSubmit}>
                  
                 <div className="row d-flex justify-content-center">
-                        <div className="col col-md-4">
+                        <div 
+                        // className="col col-md-4"
+                        >
                         <h2>Datos demográficos</h2>                                         
 
                         <input onChange={handleChange} type="text"
@@ -159,6 +166,37 @@ const NewDemo = () => {
                     </div>
                 </div>
                 </form>
+                </div>
+                <div className="col-6 m-0">
+                    <div className="row justify-content-center m-0">
+                        {/* { */}
+                        {/* this.state.allValues ?  */}
+                        <h1>
+                            {allValues.nombres} {allValues.apellidos}
+                        </h1>
+                    </div>
+                    <div className="row justify-content-center">
+                        <p>
+                            {allValues.ocupacion}
+                        </p>
+                    </div>
+                    <div className="row justify-content-center">
+                        <p>
+                            {allValues.barrio}
+                        </p>
+                    </div>
+                    <div className="row justify-content-center">
+                        <p>
+                            {allValues.celular} / {allValues.telefono}
+                        </p>
+                    </div>
+                    <div className="row justify-content-center">
+                        <p>
+                            {allValues.email}
+                        </p>
+                    </div>
+                </div>
+                </div>
             </div>
     )
    

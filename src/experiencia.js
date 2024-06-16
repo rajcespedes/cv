@@ -402,7 +402,7 @@ export default class Experiencia extends Component {
                     { this.state.list.length > 0 ? <h3>Laboral</h3> : ''}
                 {/* </div> */}
                 {/* <div> */}
-                    {this.state.list}
+                    {this.state.laboralList.map( e=> e.laboralPuesto)}
                 {/* </div> */}
                 {/* <div> */}
                     { this.state.voluntariado.length > 0 ? <h3>Voluntariado</h3> : ''}
